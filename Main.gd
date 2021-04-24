@@ -1,5 +1,6 @@
 extends Node2D
 
+var background_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
