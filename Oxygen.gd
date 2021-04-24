@@ -1,23 +1,35 @@
 extends Node2D
 
-export var max_oxygen = 5
+export var MAX_OXYGEN = 5
+export var OXYGEN_LOST = 1 # when failing the rythm
+export var OXYGEN_GAINED = 1 # when succeding the rythm
+
 var margin_x = 10
-var oxygen = max_oxygen
+var oxygen = MAX_OXYGEN
 var logos = []
 
 func _ready():
     $Sprite.visible = false    
-    for i in max_oxygen:
+    for i in MAX_OXYGEN:
         var tp = $Sprite.duplicate()
         add_child(tp)
         tp.position = Vector2(i * (tp.texture.get_size().x * tp.scale.x + margin_x), 0)
         tp.visible = true
         logos.append(tp)
         
-func _on_oxygen_update():
-    if oxygen > 0 :
-        oxygen -= 1
-        for i in oxygen:
-            logos[i].visible = true
-        for i in range(oxygen, max_oxygen):
-            logos[i].visible = false
+func _update_oxygen(rythm_fucked):
+    """
+    rythm_fucked vaudra :
+        - true s'il faut augmenter l'oxygène (rythme respecté)
+        - false s'il faut le diminuer (rythme raté)
+    """
+    if rythm_fucked:
+        oxygen = max(oxygen - OXYGEN_LOST, 0)
+        # GAME OVER ?
+    else:
+        oxygen = min(oxygen + OXYGEN_GAINED, MAX_OXYGEN)
+    for i in oxygen:
+        logos[i].visible = true
+    for i in range(oxygen, MAX_OXYGEN):
+        logos[i].visible = false
+
