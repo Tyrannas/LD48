@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Rythm.gd" type="Script" id=1]
+
+[node name="Rythm" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Oxygen" type="Label" parent="."]
+margin_right = 166.0
+margin_bottom = 97.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key" type="Label" parent="."]
+margin_left = 395.0
+margin_top = 7.0
+margin_right = 533.0
+margin_bottom = 74.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeyTimer" type="Timer" parent="."]
+
+[node name="AcceptanceDelay" type="Timer" parent="."]
