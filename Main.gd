@@ -6,12 +6,14 @@ var background_size
 func _ready():
     $Rythm.connect("keys_pressed_signal", $GUI, "_display_keys_to_press")
     $Rythm.connect("oxygen_signal", 
-                   $GUI/HBoxContainer/ItemsOxygen/Oxygen/Oxygen, 
+                   $Player/Camera2D/CanvasLayer/GUI/HBoxContainer/ItemsOxygen/Oxygen/Oxygen, 
                    "_update_oxygen")
+    
+    """
+        TO DO : A retirer si on instancie les pièces de manière auto
+    """
+    get_tree().call_group("Gold", "connect", "coin_collected", 
+        $Player/Camera2D/CanvasLayer/GUI, "_update_score")
+    
     background_size = $TextureRect.texture.get_size()
-    
-    
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
+    $Player/Camera2D.limit_bottom = background_size.y
