@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/label_HP.png" type="Texture" id=2]
 [ext_resource path="res://Oxygen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/emeralds_icon.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 4 )
 
 [node name="GUI" type="MarginContainer"]
 anchor_right = 1.0
@@ -19,14 +25,15 @@ __meta__ = {
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 660.0
-margin_bottom = 64.0
+margin_bottom = 104.0
 
 [node name="ItemsOxygen" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 100.0
-margin_bottom = 44.0
+margin_right = 210.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
 
 [node name="Oxygen" type="HBoxContainer" parent="HBoxContainer/ItemsOxygen"]
-margin_right = 100.0
+margin_right = 210.0
 margin_bottom = 40.0
 
 [node name="Text" type="MarginContainer" parent="HBoxContainer/ItemsOxygen/Oxygen"]
@@ -44,21 +51,97 @@ margin_bottom = 53.0
 texture = ExtResource( 2 )
 stretch_mode = 4
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Oxygen" parent="HBoxContainer/ItemsOxygen/Oxygen" instance=ExtResource( 3 )]
 position = Vector2( 107.48, 26.8701 )
 
-[node name="items" type="HBoxContainer" parent="HBoxContainer/ItemsOxygen"]
+[node name="Items" type="HBoxContainer" parent="HBoxContainer/ItemsOxygen"]
 margin_top = 44.0
+margin_right = 210.0
+margin_bottom = 84.0
+
+[node name="Gold" type="MarginContainer" parent="HBoxContainer/ItemsOxygen/Items"]
 margin_right = 100.0
-margin_bottom = 44.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/ItemsOxygen/Items/Gold"]
+margin_right = 100.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/ItemsOxygen/Items/Gold/Background"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_right = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Label" parent="HBoxContainer/ItemsOxygen/Items/Gold/Background"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -29.0
+custom_fonts/font = SubResource( 1 )
+text = "10"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Depth" type="MarginContainer" parent="HBoxContainer/HBoxContainer"]
+margin_left = 55.0
+margin_right = 155.0
+margin_bottom = 84.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/HBoxContainer/Depth"]
+margin_right = 100.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 100, 40 )
+
+[node name="Number" type="Label" parent="HBoxContainer/HBoxContainer/Depth/Background"]
+anchor_left = -0.00793701
+anchor_right = 0.992063
+anchor_bottom = 1.0
+margin_left = 0.594604
+margin_right = 0.594604
+custom_fonts/font = SubResource( 1 )
+text = "10m"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Arrows" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 104.0
-margin_right = 104.0
-margin_bottom = 44.0
+margin_left = 429.0
+margin_right = 640.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
