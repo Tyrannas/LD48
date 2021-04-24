@@ -10,7 +10,7 @@ func _physics_process(delta):
     velocity.x = speed * direction.x
     velocity.y = gravity * delta
     velocity = move_and_slide(velocity)
-    
+
 func get_direction() -> Vector2:
     return Vector2(Input.get_action_strength("move_right") - 
         Input.get_action_strength("move_left"),
