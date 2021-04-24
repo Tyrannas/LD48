@@ -7,6 +7,7 @@ func _ready():
     $Rythm.connect("oxygen_signal", 
                    $GUI/HBoxContainer/ItemsOxygen/Oxygen/Oxygen, 
                    "_update_oxygen")
+    background_size = $TextureRect.texture.get_size()
     
     
 
