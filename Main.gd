@@ -2,6 +2,10 @@ extends Node2D
 
 signal biome_change
 
+# When adding the breath inputs in the GUI, there is an offset of ~23 between the position and the 
+# Could not find where it came from (not from margin apparently)
+var RANDOM_X_OFFSET = 23
+
 var background_size
 var biome_index = 0
 
@@ -10,9 +14,9 @@ var biome_index = 0
 #- clef : profondeur à laquelle commence le biome
 #- valeur : touches à saisir séquentiellement pour respirer
 var biome_inputs = [
-    {0: ['ui_left', 'ui_right', 'ui_up', 'ui_up']},
-    {50: ['ui_left', 'ui_up', 'ui_right', 'ui_down']},
-    {250: ['ui_up', 'ui_up', 'ui_up', 'ui_up']}
+    {0: ['ui_down', 'ui_down', 'ui_down']},
+    {50: ['ui_left', 'ui_left', 'ui_left', 'ui_left']},
+    {100: ['ui_up', 'ui_up', 'ui_up']}
 ]
 
 func get_biome_inputs(index):
@@ -28,19 +32,17 @@ func instantiate_biome_delimiters():
     for biome_i in len(biome_inputs):
         if biome_i == 0:
             continue
-        var depth = self.get_biome_depth(biome_i) * 10
+        var biome_depth = self.get_biome_depth(biome_i) * 10
         var inputs = self.get_biome_inputs(biome_i)
         var separation_sprite = Sprite.new()
         separation_sprite.set_texture(separation_picture)
-        separation_sprite.position = Vector2(0, depth)
-        print("Initiate biome : " + str(separation_sprite.position))
+        separation_sprite.position = Vector2(0, biome_depth)
         add_child(separation_sprite)
         for input_i in len(inputs):
             var key_sprite = breah_input_node.get_key_sprites(inputs[input_i], 0, len(inputs), input_i)
-            key_sprite.position.y = depth
+            key_sprite.position.x += RANDOM_X_OFFSET
+            key_sprite.position.y = biome_depth
             add_child(key_sprite)
-            print("Initiate key sprite : " + str(key_sprite.position))
-            print("Initiate key Global sprites : " + str(key_sprite.global_position))
 
 func _ready():
     $Rythm.connect("keys_pressed_signal", 
