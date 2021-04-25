@@ -8,7 +8,7 @@ func _on_body_entered(body):
         l'écran le temps que la musique se joue. Sinon, la pièce reste 
         affichée jusqu'à la fin de la musique, ce qui créé un décalage
     """
-    $Sprite.visible = false
+    $AnimatedSprite.visible = false
     $Sound.play()
     emit_signal("coin_collected", 1)
     yield($Sound, "finished")
