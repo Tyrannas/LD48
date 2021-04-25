@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://algue.png" type="Texture" id=1]
+[ext_resource path="res://algue.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rest"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skeleton2D/Bone2D/Bone2D/Bone2D/Bone2D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -1.34692, 11.2042 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skeleton2D/Bone2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -33.4392, -28.0144 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skeleton2D/Bone2D/Bone2D:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -3.71807, 3.44063 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skeleton2D/Bone2D/Bone2D/Bone2D:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.62941, 5.94469 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Polygon2D:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 9.48293, 256.742 )
+offset = Vector2( -9.48293, -256.742 )
+texture = ExtResource( 1 )
+skeleton = NodePath("../Skeleton2D")
+polygon = PoolVector2Array( 158.852, 49.7608, 144.498, 22.488, 170.335, -8.13397, 102.392, 9.09091, 75.5981, 37.799, 44.0191, 16.2679, 25.8373, 83.2536, 16.2679, 118.182, 53.5885, 189.952, 39.2344, 239.234, -2.87082, 247.368, -1.91388, 272.249, 58.8517, 269.856, 84.2105, 220.574, 120.096, 228.708, 166.986, 182.297, 206.699, 179.904, 227.273, 130.622, 192.823, 112.919, 211.962, 81.8182, 258.373, 73.6842, 263.158, 28.7081, 223.445, 52.6316 )
+uv = PoolVector2Array( 158.852, 49.7608, 144.498, 22.488, 167.943, -0.956932, 102.392, 9.09091, 75.5981, 37.799, 44.0191, 16.2679, 25.8373, 83.2536, 16.2679, 118.182, 53.5885, 189.952, 39.2344, 239.234, -2.87082, 247.368, -1.91388, 272.249, 58.8517, 269.856, 84.2105, 220.574, 120.096, 228.708, 166.986, 182.297, 206.699, 179.904, 227.273, 130.622, 192.823, 112.919, 211.962, 81.8182, 258.373, 73.6842, 263.158, 28.7081, 223.445, 52.6316 )
+bones = [ NodePath("Bone2D"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Bone2D/Bone2D"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Bone2D/Bone2D/Bone2D"), PoolRealArray( 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0 ), NodePath("Bone2D/Bone2D/Bone2D/Bone2D"), PoolRealArray( 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1 ) ]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D"]
+position = Vector2( 14.3832, 261.308 )
+rotation = -0.583625
+rest = Transform2D( 0.880477, -0.474088, 0.474088, 0.880477, 12.2809, 259.626 )
+default_length = 50.0
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D"]
+position = Vector2( 60.9108, -4.92723 )
+rotation = -0.0648926
+rest = Transform2D( 1, 0, 0, 1, 60.9108, -4.92723 )
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D/Bone2D"]
+position = Vector2( 40.1222, -70.0808 )
+rotation = 0.0284385
+rest = Transform2D( 1, 0, 0, 1, 40.1222, -70.0808 )
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D/Bone2D/Bone2D"]
+position = Vector2( 35.3387, -30.1569 )
+rotation = -0.0235082
+rest = Transform2D( 1, 0, 0, 1, 35.3387, -30.1569 )
+default_length = 70.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
+anims/rest = SubResource( 1 )
