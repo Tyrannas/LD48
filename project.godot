@@ -24,6 +24,10 @@ config/name="LD48"
 run/main_scene="res://Start_screen.tscn"
 config/icon="res://assets/icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=680

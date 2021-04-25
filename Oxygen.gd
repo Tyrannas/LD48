@@ -1,5 +1,7 @@
 extends Node2D
 
+signal game_over
+
 export var MAX_OXYGEN = 5
 export var OXYGEN_LOST = 1 # when failing the rythm
 export var OXYGEN_GAINED = 1 # when succeding the rythm
@@ -7,6 +9,7 @@ export var OXYGEN_GAINED = 1 # when succeding the rythm
 var margin_x = 10
 var oxygen = MAX_OXYGEN
 var logos = []
+
 
 func _ready():
     $Sprite.visible = false    
@@ -25,7 +28,9 @@ func _update_oxygen(rythm_fucked):
     """
     if rythm_fucked:
         oxygen = max(oxygen - OXYGEN_LOST, 0)
-        # GAME OVER ?
+        if oxygen == 0 :
+            Global.is_dead = true
+            emit_signal("game_over")
     else:
         oxygen = min(oxygen + OXYGEN_GAINED, MAX_OXYGEN)
     for i in oxygen:

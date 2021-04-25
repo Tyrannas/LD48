@@ -46,6 +46,9 @@ func _ready():
     """
     get_tree().call_group("Gold", "connect", "coin_collected", 
         $Player/Camera2D/CanvasLayer/GUI, "_update_score")
+        
+    # Gestion de la fin de partie
+    $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen.connect("game_over",self, "_game_over")
     
     background_size = $TextureRect.texture.get_size()
     $Player/Camera2D.limit_bottom = background_size.y
@@ -53,6 +56,8 @@ func _ready():
     $Player.GRAVITY = 0.0
     self.instantiate_biome_delimiters()
     
+    if Global.is_retry == true : 
+        $StartTimer.start(1)
 
 
 func _process(delta):
@@ -73,9 +78,13 @@ func _on_StartTimer_timeout():
     new_game()
 
 func new_game():
+    Global.score = 0
     $ReadyText.visible = false
     emit_signal("biome_change", self.get_inputs_from_depth())
     $Player.GRAVITY = 3000.0
     $Player.position = Vector2(340.106,176.227)
     $Player.visible = true
     
+func _game_over():
+    $Player.GRAVITY = 0.0
+    get_tree().change_scene("res://GameOver.tscn")
