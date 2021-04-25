@@ -5,6 +5,7 @@ signal biome_change
 var background_size
 var biome_index = 0
 
+
 #Pour chaque biome : 
 #- clef : profondeur à laquelle commence le biome
 #- valeur : touches à saisir séquentiellement pour respirer
@@ -47,4 +48,4 @@ func _process(delta):
             biome_index += 1
             emit_signal("biome_change", self.get_inputs_from_depth())
             
-    
+

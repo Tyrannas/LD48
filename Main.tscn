@@ -49,3 +49,7 @@ position = Vector2( 409.16, 490.046 )
 "Gold",
 ] instance=ExtResource( 7 )]
 position = Vector2( 446.332, 338.213 )
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
