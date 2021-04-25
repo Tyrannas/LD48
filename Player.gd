@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var GRAVITY = 3000.0
+var GRAVITY
 var SPEED = 300.0
 var velocity = Vector2.ZERO
 var screen_size

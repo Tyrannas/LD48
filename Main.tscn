@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/background.png" type="Texture" id=1]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://Main.gd" type="Script" id=5]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Gold.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 8 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
@@ -15,6 +20,18 @@ script = ExtResource( 5 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReadyText" type="Label" parent="."]
+margin_left = 243.033
+margin_top = 239.368
+margin_right = 446.033
+margin_bottom = 365.368
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ready ?"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -32,8 +49,8 @@ limit_right = 680
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 
 [node name="GUI" parent="Player/Camera2D/CanvasLayer" instance=ExtResource( 2 )]
-margin_left = -1.0
-margin_bottom = 124.0
+margin_left = 3.23785
+margin_right = 4.23785
 
 [node name="Oxygen" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -51,7 +68,7 @@ position = Vector2( 409.16, 490.046 )
 position = Vector2( 446.332, 338.213 )
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 

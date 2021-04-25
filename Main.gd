@@ -38,7 +38,8 @@ func _ready():
     background_size = $TextureRect.texture.get_size()
     $Player/Camera2D.limit_bottom = background_size.y
     
-    $Player.visible = false
+    $Player.GRAVITY = 0.0   
+    
 
 
 func _process(delta):
@@ -51,12 +52,17 @@ func _process(delta):
             biome_index += 1
             emit_signal("biome_change", self.get_inputs_from_depth())
             
+    # Affichage du temps restant avant de démarrer le jeu
+    $ReadyText.text = "Ready ?" + str(int($StartTimer.time_left))
+
 
 func _on_StartTimer_timeout():
     new_game()
 
 func new_game():
+    $ReadyText.visible = false
     emit_signal("biome_change", self.get_inputs_from_depth())
+    $Player.GRAVITY = 3000.0
     $Player.position = Vector2(340.106,176.227)
     $Player.visible = true
     

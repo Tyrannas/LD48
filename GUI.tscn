@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/label_HP_bg.png" type="Texture" id=1]
 [ext_resource path="res://GUI.gd" type="Script" id=2]
 [ext_resource path="res://Oxygen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/coin.png" type="Texture" id=5]
@@ -42,12 +41,12 @@ margin_right = 640.0
 margin_bottom = 84.0
 
 [node name="ItemsOxygen" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 318.0
+margin_right = 210.0
 margin_bottom = 84.0
 size_flags_horizontal = 3
 
 [node name="Oxygen" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ItemsOxygen"]
-margin_right = 318.0
+margin_right = 210.0
 margin_bottom = 40.0
 
 [node name="Text" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen"]
@@ -68,6 +67,7 @@ margin_top = -71.7172
 margin_right = -11.8635
 margin_bottom = 5.2828
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Oxygen"
 align = 1
 valign = 2
@@ -80,7 +80,7 @@ position = Vector2( 107.48, 22.6322 )
 
 [node name="Items" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ItemsOxygen"]
 margin_top = 44.0
-margin_right = 318.0
+margin_right = 210.0
 margin_bottom = 84.0
 
 [node name="Gold" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ItemsOxygen/Items"]
@@ -95,7 +95,6 @@ self_modulate = Color( 1, 1, 1, 0.470588 )
 margin_right = 100.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 40 )
-texture = ExtResource( 1 )
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer/ItemsOxygen/Items/Gold/Background"]
 anchor_left = 0.5
@@ -122,6 +121,7 @@ margin_top = -58.2953
 margin_right = 20.1164
 margin_bottom = 18.7047
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 align = 1
 valign = 2
@@ -130,22 +130,22 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 322.0
-margin_right = 640.0
+margin_left = 214.0
+margin_right = 425.0
 margin_bottom = 84.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 alignment = 1
 
 [node name="DontTOUCH" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_right = 318.0
+margin_right = 211.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/HBoxContainer/DontTOUCH"]
-margin_right = 318.0
+margin_right = 211.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 40 )
 
@@ -165,7 +165,7 @@ __meta__ = {
 
 [node name="Depth" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
 margin_top = 44.0
-margin_right = 318.0
+margin_right = 211.0
 margin_bottom = 84.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -173,10 +173,9 @@ __meta__ = {
 
 [node name="Background" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/HBoxContainer/Depth"]
 self_modulate = Color( 1, 1, 1, 0.470588 )
-margin_right = 318.0
+margin_right = 211.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 40 )
-texture = ExtResource( 1 )
 
 [node name="Number" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer/Depth/Background"]
 anchor_left = -0.00398976
@@ -186,12 +185,20 @@ anchor_bottom = 1.50479
 margin_left = 0.594604
 margin_right = 0.594604
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "10m"
 align = 1
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="DontTouch" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 429.0
+margin_right = 640.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ArrowsContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 88.0
