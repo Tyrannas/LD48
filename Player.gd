@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var GRAVITY = 3000.0
+var GRAVITY
 var SPEED = 300.0
 var velocity = Vector2.ZERO
 var screen_size
@@ -28,11 +28,15 @@ func _physics_process(delta):
     
     # Symétrie en cas de changement de côté
     if velocity.x < 0 :
-        flip_sprite = false
+        if $PlayerAnimated.scale.x < 0:
+            $PlayerAnimated.scale.x = -$PlayerAnimated.scale.x
     elif velocity.x > 0 :
-        flip_sprite = true
+        if $PlayerAnimated.scale.x > 0:
+            $PlayerAnimated.scale.x = -$PlayerAnimated.scale.x
+
     
-    $Sprite.flip_h = flip_sprite
+
+    
     
     # Pour éviter que le personnage sorte de l'écran (fonction clamp)
     # Et qu'il ne soit pas découpé en 2 (le clamp prenant le milieu de la sprite)
@@ -40,7 +44,7 @@ func _physics_process(delta):
     position.x = clamp(position.x, 0 + (sprite_size.x/2), screen_size.x - (sprite_size.x/2))
     position.y = clamp(position.y, 0, background_size.y - (sprite_size.y/2))
     
-    $Pipe.position = Vector2(0,0)
+    $Pipe.position = Vector2(0, 0)
     angle_pipe = $Pipe.get_global_transform().origin.angle_to_point(Vector2(background_size.x / 2, 0))
     # $Pipe.rotation = angle_pipe + PI
     $Pipe.scale.y = dist_player_top_viewport / max_pipe_size.y

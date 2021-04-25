@@ -18,7 +18,20 @@ var biome_inputs = [
 func get_inputs_from_depth():
     return biome_inputs[biome_index].values()[0]
 
-# Called when the node enters the scene tree for the first time.
+func instantiate_biome_delimiters():
+    var separation_picture = load("res://assets/lifebar_bg.png")
+    # we skip the first biome
+    for i in len(biome_inputs):
+        if i == 0:
+            continue
+        var depth = biome_inputs[i].keys()[0]
+        var separation_sprite = Sprite.new()
+        separation_sprite.set_texture(separation_picture)
+        separation_sprite.position = Vector2(0, depth * 10)
+        add_child(separation_sprite)
+        
+
+
 func _ready():
     $Rythm.connect("keys_pressed_signal", 
                    $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput,
@@ -27,7 +40,6 @@ func _ready():
                    $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen, 
                    "_update_oxygen")
     self.connect("biome_change", $Rythm, "_update_biome_inputs")
-#    emit_signal("biome_change", self.get_inputs_from_depth())
     
     """
         TO DO : A retirer si on instancie les pièces de manière auto
@@ -38,7 +50,9 @@ func _ready():
     background_size = $TextureRect.texture.get_size()
     $Player/Camera2D.limit_bottom = background_size.y
     
-    $Player.visible = false
+    $Player.GRAVITY = 0.0
+    self.instantiate_biome_delimiters()
+    
 
 
 func _process(delta):
@@ -51,12 +65,17 @@ func _process(delta):
             biome_index += 1
             emit_signal("biome_change", self.get_inputs_from_depth())
             
+    # Affichage du temps restant avant de démarrer le jeu
+    $ReadyText.text = "Ready ? " + str(int($StartTimer.time_left))
+
 
 func _on_StartTimer_timeout():
     new_game()
 
 func new_game():
+    $ReadyText.visible = false
     emit_signal("biome_change", self.get_inputs_from_depth())
+    $Player.GRAVITY = 3000.0
     $Player.position = Vector2(340.106,176.227)
     $Player.visible = true
     

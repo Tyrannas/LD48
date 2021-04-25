@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_puppet.png-35d5cdf2ffaee55476a8cab4f96ef8d2.stex"
+path="res://.import/player_puppet.png-04118bc66c265d0005a0e6897945bb2f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player_puppet.png"
-dest_files=[ "res://.import/player_puppet.png-35d5cdf2ffaee55476a8cab4f96ef8d2.stex" ]
+source_file="res://assets/prefabs/player_puppet.png"
+dest_files=[ "res://.import/player_puppet.png-04118bc66c265d0005a0e6897945bb2f.stex" ]
 
 [params]
 
