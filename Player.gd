@@ -12,8 +12,10 @@ func _ready():
 
 func _physics_process(delta):
     var direction = get_direction()
-    var background_size = get_parent().background_size.y
+    var background_size = get_parent().background_size
     var sprite_size = $Sprite.texture.get_size() * $Sprite.scale
+    var dist_player_top_camera = get_global_transform_with_canvas().origin.y
+#    var max_pipe_size = $Pipe.texture.get_size()
     
     velocity.x = SPEED * direction.x
     velocity.y = GRAVITY * delta
@@ -23,12 +25,12 @@ func _physics_process(delta):
     # Et qu'il ne soit pas découpé en 2 (le clamp prenant le milieu de la sprite)
     # Ne pas oublier de faire * scale quand on rescale la sprite
     position.x = clamp(position.x, 0 + (sprite_size.x/2), screen_size.x - (sprite_size.x/2))
-    position.y = clamp(position.y, 0, background_size - (sprite_size.y/2))
+    position.y = clamp(position.y, 0, background_size.y - (sprite_size.y/2))
     
-#    $Pipe.position = Vector2(0,0)
-#    $Pipe.position = get_angle_to()
-
-
+    $Pipe.position = Vector2(0,0)
+    angle_pipe = $Pipe.get_global_transform().origin.angle_to_point(Vector2(background_size.x / 2, 0))
+    $Pipe.rotation = angle_pipe + PI
+    $Pipe.scale.y = dist_player_top_camera / 500
 
 
 func get_direction() -> Vector2:

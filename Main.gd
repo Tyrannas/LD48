@@ -19,3 +19,4 @@ func _ready():
     
     background_size = $TextureRect.texture.get_size()
     $Player/Camera2D.limit_bottom = background_size.y
+
