@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/prefabs/caillou/murene/murene.png" type="Texture" id=1]
+[ext_resource path="res://assets/prefabs/caillou/murene/murene.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rest"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skeleton2D/Bone2D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -22.896, -25.1459 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skeleton2D/Bone2D/Bone2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -24.1569, -5.28213 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skeleton2D/Bone2D/Bone2D/Bone2D:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -38.4537, -58.077, -20.0063 ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture = ExtResource( 1 )
+skeleton = NodePath("../Skeleton2D")
+polygon = PoolVector2Array( 2.22629, 25.431, 34.9849, 14.2241, 81.9677, 28.8793, 103.95, 24.569, 124.64, 3.01724, 171.192, -5.17242, 180.675, 2.5862, 178.088, 20.6897, 163.864, 31.8966, 145.33, 62.069, 109.554, 84.4828, 66.8815, 80.6035, 47.0539, 85.3448, 13.8642, 135.345, -2.08406, 138.362, -9.41164, 37.069 )
+uv = PoolVector2Array( 2.22629, 25.431, 34.9849, 14.2241, 81.9677, 28.8793, 103.95, 24.569, 124.64, 3.01724, 171.192, -5.17242, 180.675, 2.5862, 178.088, 20.6897, 163.864, 31.8966, 145.33, 62.069, 109.554, 84.4828, 66.8815, 80.6035, 47.0539, 85.3448, 13.8642, 135.345, -2.08406, 138.362, -9.41164, 37.069 )
+bones = [ NodePath("Bone2D"), PoolRealArray( 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 ), NodePath("Bone2D/Bone2D"), PoolRealArray( 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 ), NodePath("Bone2D/Bone2D/Bone2D"), PoolRealArray( 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 ) ]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D"]
+position = Vector2( 4.5, 80 )
+rotation = -0.259199
+rest = Transform2D( 1, 0, 0, 1, 4.5, 80 )
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D"]
+position = Vector2( 46, -29 )
+rotation = -0.273473
+rest = Transform2D( 1, 0, 0, 1, 46, -29 )
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D/Bone2D"]
+position = Vector2( 57, -1 )
+rotation = -0.893293
+rest = Transform2D( 0.783111, -0.621882, 0.621882, 0.783111, 57, -1 )
+default_length = 63.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/rest = SubResource( 1 )

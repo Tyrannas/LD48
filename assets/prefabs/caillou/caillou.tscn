@@ -1,0 +1,199 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/prefabs/caillou/caillou1.png" type="Texture" id=1]
+[ext_resource path="res://assets/prefabs/caillou/caillou.gd" type="Script" id=2]
+[ext_resource path="res://assets/prefabs/caillou/murene/murene.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rest"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("algue2/algue2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -43.0395, -21.3396 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("algue2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("algue1:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("algue3:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("algue3/algue3:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -43.0395, -70.6977 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("algue3/algue3/algue3bonus:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -4.6963, -30.7637 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("algue2/algue2/algue2_bonus:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -4.6963, -36.4623 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("algue1/algue2:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -43.0395, -57.2107, -60.8952 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("algue1/algue2/algue2_bonus:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -4.6963, 21.3737, -16.7022 ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="algue1" type="Polygon2D" parent="Node2D"]
+texture = ExtResource( 1 )
+skeleton = NodePath("../../algue1")
+polygon = PoolVector2Array( 30.1775, 34.9112, 23.0769, 11.8343, 44.3787, -8.28402, 47.929, 7.10059, 59.1716, 6.50887, 63.9053, 34.9112, 76.3314, 31.9527, 76.9231, 18.9349, 88.7574, 27.8107, 108.876, 14.2012, 108.876, 36.0947, 97.0414, 88.7574, 79.2899, 82.8402, 75.7396, 73.3728, 63.3136, 68.0473, 58.5799, 53.8462, 56.8047, 43.1953, 36.6864, 46.1538 )
+uv = PoolVector2Array( 30.1775, 34.9112, 23.0769, 11.8343, 44.3787, -8.28402, 47.929, 7.10059, 59.1716, 6.50887, 63.9053, 34.9112, 76.3314, 31.9527, 76.9231, 18.9349, 88.7574, 27.8107, 108.876, 14.2012, 108.876, 36.0947, 97.0414, 88.7574, 79.2899, 82.8402, 75.7396, 73.3728, 63.3136, 68.0473, 58.5799, 53.8462, 56.8047, 43.1953, 36.6864, 46.1538 )
+bones = [ NodePath("algue2"), PoolRealArray( 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 ), NodePath("algue2/algue2_bonus"), PoolRealArray( 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 ) ]
+
+[node name="algue2" type="Polygon2D" parent="Node2D"]
+texture = ExtResource( 1 )
+skeleton = NodePath("../../algue2")
+polygon = PoolVector2Array( 89.9408, 104.734, 92.3077, 113.018, 105.325, 122.485, 110.651, 115.385, 142.604, 114.793, 157.988, 97.6331, 152.663, 71.5976, 139.053, 83.432, 139.053, 91.1243, 118.343, 82.8402, 111.243, 59.7633, 102.959, 71.5976, 99.4083, 84.6154, 100, 101.775 )
+uv = PoolVector2Array( 89.9408, 104.734, 92.3077, 113.018, 105.325, 122.485, 110.651, 115.385, 142.604, 114.793, 157.988, 97.6331, 152.663, 71.5976, 139.053, 83.432, 139.053, 91.1243, 118.343, 82.8402, 111.243, 59.7633, 102.959, 71.5976, 99.4083, 84.6154, 100, 101.775 )
+bones = [ NodePath("algue2"), PoolRealArray( 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1 ), NodePath("algue2/algue2_bonus"), PoolRealArray( 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 ) ]
+
+[node name="algue3" type="Polygon2D" parent="Node2D"]
+texture = ExtResource( 1 )
+skeleton = NodePath("../../algue3")
+polygon = PoolVector2Array( 91.716, 243.787, 92.8994, 228.402, 111.243, 218.935, 109.467, 198.225, 118.935, 189.349, 119.527, 169.822, 134.911, 184.615, 125.444, 205.325, 128.402, 213.018, 131.953, 210.059, 131.953, 195.266, 145.562, 188.757, 145.562, 202.367, 147.929, 223.077, 137.87, 225.444, 147.929, 232.544, 145.562, 248.521, 142.604, 266.272, 126.627, 252.071, 114.201, 248.521, 107.692, 247.337, 98.8166, 244.379 )
+uv = PoolVector2Array( 91.716, 243.787, 92.8994, 228.402, 111.243, 218.935, 109.467, 198.225, 118.935, 189.349, 119.527, 169.822, 134.911, 184.615, 125.444, 205.325, 128.402, 213.018, 131.953, 210.059, 131.953, 195.266, 145.562, 188.757, 145.562, 202.367, 147.929, 223.077, 137.87, 225.444, 147.929, 232.544, 145.562, 248.521, 142.604, 266.272, 126.627, 252.071, 114.201, 248.521, 107.692, 247.337, 98.8166, 244.379 )
+bones = [ NodePath("algue3"), PoolRealArray( 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1 ), NodePath("algue3/algue3bonus"), PoolRealArray( 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 ) ]
+
+[node name="Polygon2D4" type="Polygon2D" parent="Node2D"]
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 3.55029, 7.10059, 20.1183, 19.5266, 24.8521, 42.6036, 34.3195, 46.7456, 43.787, 44.3787, 56.8047, 44.9704, 61.5385, 57.9882, 64.497, 66.2722, 72.7811, 69.2308, 76.9231, 72.7811, 79.2899, 80.4734, 69.2308, 89.9408, 66.2722, 101.183, 55.6213, 105.917, 59.7633, 111.834, 81.0651, 104.734, 91.716, 110.651, 104.734, 120.118, 118.343, 128.402, 113.609, 144.97, 115.976, 162.722, 103.55, 167.456, 114.793, 183.432, 106.509, 210.651, 90.5325, 223.669, 89.9408, 237.87, 95.858, 243.787, 113.018, 247.929, 128.994, 253.846, 130.769, 269.823, 120.118, 301.775, 66.2722, 347.337, 36.6864, 394.675, -7.10059, 393.491, -11.8343, 311.243, -2.36687, 186.982, -12.426, 52.071 )
+uv = PoolVector2Array( 3.55029, 7.69231, 20.1183, 19.5266, 24.8521, 42.6036, 34.3195, 46.7456, 43.787, 44.3787, 56.8047, 44.9704, 61.5385, 57.9882, 64.497, 66.2722, 72.7811, 69.2308, 76.9231, 72.7811, 79.2899, 80.4734, 69.2308, 89.9408, 66.2722, 101.183, 55.6213, 105.917, 59.7633, 111.834, 81.0651, 104.734, 91.716, 110.651, 104.734, 120.118, 118.343, 128.402, 113.609, 144.97, 115.976, 162.722, 103.55, 167.456, 114.793, 183.432, 106.509, 210.651, 90.5325, 223.669, 89.9408, 237.87, 95.858, 243.787, 113.018, 247.929, 128.994, 253.846, 130.769, 269.823, 120.118, 301.775, 66.2722, 347.337, 36.6864, 394.675, -7.10059, 393.491, -11.8343, 311.243, -2.36687, 186.982, -12.426, 52.071 )
+
+[node name="algue1" type="Skeleton2D" parent="."]
+
+[node name="algue2" type="Bone2D" parent="algue1"]
+position = Vector2( 58.5714, 53.459 )
+rotation = -0.751182
+rest = Transform2D( 0.730883, -0.682503, 0.682503, 0.730883, 58.5714, 53.459 )
+default_length = 56.0
+
+[node name="algue2_bonus" type="Bone2D" parent="algue1/algue2"]
+position = Vector2( 32.3081, 1.14542 )
+rotation = -0.0819659
+rest = Transform2D( 0.996643, -0.0818742, 0.0818742, 0.996643, 32.3081, 1.14542 )
+default_length = 25.0
+
+[node name="algue2" type="Skeleton2D" parent="."]
+
+[node name="algue2" type="Bone2D" parent="algue2"]
+position = Vector2( 98.2589, 115.825 )
+rotation = -0.751182
+rest = Transform2D( 0.730883, -0.682503, 0.682503, 0.730883, 98.2589, 115.825 )
+default_length = 56.0
+
+[node name="algue2_bonus" type="Bone2D" parent="algue2/algue2"]
+position = Vector2( 32.3081, 1.14542 )
+rotation = -0.0819659
+rest = Transform2D( 0.996299, -0.0859531, 0.0859531, 0.996299, 32.3081, 1.14542 )
+default_length = 25.0
+
+[node name="algue3" type="Skeleton2D" parent="."]
+position = Vector2( 1, -0.5 )
+
+[node name="algue3" type="Bone2D" parent="algue3"]
+position = Vector2( 101.409, 245.597 )
+rotation = -0.751182
+rest = Transform2D( 0.730883, -0.682503, 0.682503, 0.730883, 101.409, 245.597 )
+default_length = 56.0
+
+[node name="algue3bonus" type="Bone2D" parent="algue3/algue3"]
+position = Vector2( 32.3081, 1.14542 )
+rotation = -0.0819659
+rest = Transform2D( 0.996643, -0.0818742, 0.0818742, 0.996643, 32.3081, 1.14542 )
+default_length = 25.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/rest = SubResource( 1 )
+
+[node name="Murene" parent="." instance=ExtResource( 3 )]
+position = Vector2( 124.591, 116.097 )
+rotation = 0.215152
