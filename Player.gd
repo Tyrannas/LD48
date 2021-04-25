@@ -32,6 +32,8 @@ func _physics_process(delta):
     $Pipe.rotation = angle_pipe + PI
     $Pipe.scale.y = dist_player_top_camera / 500
 
+    $Camera2D/CanvasLayer/GUI/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(int(position.y / 10.0)) + "m"
+
 
 func get_direction() -> Vector2:
     return Vector2(Input.get_action_strength("move_right") - 
