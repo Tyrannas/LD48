@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/algue.png-3294f93b184a10974c94a1aef0e8b59b.stex"
+path="res://.import/algue.png-a4789bc0a0101d05c45eff0f338946f1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://algue.png"
-dest_files=[ "res://.import/algue.png-3294f93b184a10974c94a1aef0e8b59b.stex" ]
+source_file="res://assets/prefabs/algue.png"
+dest_files=[ "res://.import/algue.png-a4789bc0a0101d05c45eff0f338946f1.stex" ]
 
 [params]
 

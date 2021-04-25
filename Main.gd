@@ -66,7 +66,7 @@ func _process(delta):
             emit_signal("biome_change", self.get_inputs_from_depth())
             
     # Affichage du temps restant avant de démarrer le jeu
-    $ReadyText.text = "Ready ?" + str(int($StartTimer.time_left))
+    $ReadyText.text = "Ready ? " + str(int($StartTimer.time_left))
 
 
 func _on_StartTimer_timeout():
