@@ -69,6 +69,10 @@ func _ready():
     
     if Global.is_retry == true : 
         $StartTimer.start(1)
+    
+    # Pour que l'on entende bien la musique partout
+    $Music.position = $Player.position
+
 
 
 func _process(delta):
