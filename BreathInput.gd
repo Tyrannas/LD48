@@ -1,7 +1,6 @@
 extends Node2D
 
 var MARGIN_X = 10
-var INITIAL_POSITION = Vector2(113, 7)
 var INPUTS_GROUP = "BreathInputs"
 
 var input_rotation = {
@@ -51,7 +50,6 @@ func _display_keys_to_press(keys_pressed):
         var result = keys_pressed[i]["result"]
         var sprite = Sprite.new()
         sprite.set_texture(arrows_pictures[result])
-        sprite.position = INITIAL_POSITION
         sprite.position = Vector2(i * (sprite.texture.get_size().x * sprite.scale.x + MARGIN_X), 0)
         sprite.rotation_degrees = input_rotation[input]
         sprite.add_to_group(INPUTS_GROUP)

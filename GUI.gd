@@ -10,4 +10,4 @@ func _ready():
 func _update_score(nb_coins):
     score += 10 * nb_coins
 
-    $HBoxContainer/ItemsOxygen/Items/Gold/Background/Number.text = str(score)
+    $VBoxContainer/HBoxContainer/ItemsOxygen/Items/Gold/Background/Number.text = str(score)

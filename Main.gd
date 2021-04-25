@@ -20,10 +20,10 @@ func get_inputs_from_depth():
 # Called when the node enters the scene tree for the first time.
 func _ready():
     $Rythm.connect("keys_pressed_signal", 
-                   $Player/Camera2D/CanvasLayer/GUI/HBoxContainer/ArrowsContainer/MarginContainer/BreathInput,
+                   $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput,
                    "_display_keys_to_press")
     $Rythm.connect("oxygen_signal", 
-                   $Player/Camera2D/CanvasLayer/GUI/HBoxContainer/ItemsOxygen/Oxygen/Oxygen, 
+                   $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen, 
                    "_update_oxygen")
     self.connect("biome_change", $Rythm, "_update_biome_inputs")
     emit_signal("biome_change", self.get_inputs_from_depth())

@@ -46,7 +46,7 @@ func _physics_process(delta):
     $Pipe.scale.y = dist_player_top_viewport / max_pipe_size.y
     
     depth = int(position.y / 10.0)
-    $Camera2D/CanvasLayer/GUI/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(depth) + "m"
+    $Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(depth) + "m"
 
 
 func get_direction() -> Vector2:
