@@ -6,6 +6,7 @@ var velocity = Vector2.ZERO
 var screen_size
 var angle_pipe = 0
 var flip_sprite = false
+var depth = 0
 
 
 func _ready():
@@ -20,7 +21,6 @@ func _physics_process(delta):
     var max_pipe_size = $Pipe.texture.get_size()
     var top_of_viewport = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().position.y)
     var dist_player_top_viewport = player_position_relative.distance_to(top_of_viewport)
-    
     
     velocity.x = SPEED * direction.x
     velocity.y = GRAVITY * delta
@@ -44,8 +44,9 @@ func _physics_process(delta):
     angle_pipe = $Pipe.get_global_transform().origin.angle_to_point(Vector2(background_size.x / 2, 0))
     # $Pipe.rotation = angle_pipe + PI
     $Pipe.scale.y = dist_player_top_viewport / max_pipe_size.y
-
-    $Camera2D/CanvasLayer/GUI/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(int(position.y / 10.0)) + "m"
+    
+    depth = int(position.y / 10.0)
+    $Camera2D/CanvasLayer/GUI/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(depth) + "m"
 
 
 func get_direction() -> Vector2:
