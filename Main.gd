@@ -9,6 +9,8 @@ var RANDOM_X_OFFSET = 23
 var background_size
 var biome_index = 0
 
+var BiomeTransition = preload("res://BiomeTransition.tscn")
+
 
 #Pour chaque biome : 
 #- clef : profondeur à laquelle commence le biome
@@ -26,18 +28,22 @@ func get_biome_depth(index):
     return biome_inputs[index].keys()[0]
 
 func instantiate_biome_delimiters():
-    var separation_picture = load("res://assets/lifebar_bg.png")
-    var breah_input_node = $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput
     # we skip the first biome
     for biome_i in len(biome_inputs):
         if biome_i == 0:
             continue
         var biome_depth = self.get_biome_depth(biome_i) * 10
+
+        var biome_transition = BiomeTransition.instance()
+        var transition_sprite = biome_transition.get_node('Sprite')
+        var transition_collision = biome_transition.get_node('CollisionShape2D')
+        biome_transition.connect('body_entered', self, '_update_biome')  
+        transition_sprite.position.y = biome_depth
+        transition_collision.position.y = biome_depth
+        add_child(biome_transition)
+        
         var inputs = self.get_biome_inputs(biome_i)
-        var separation_sprite = Sprite.new()
-        separation_sprite.set_texture(separation_picture)
-        separation_sprite.position = Vector2(0, biome_depth)
-        add_child(separation_sprite)
+        var breah_input_node = $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput
         for input_i in len(inputs):
             var key_sprite = breah_input_node.get_key_sprites(inputs[input_i], 0, len(inputs), input_i)
             key_sprite.position.x += RANDOM_X_OFFSET
@@ -53,9 +59,7 @@ func _ready():
                    "_update_oxygen")
     self.connect("biome_change", $Rythm, "_update_biome_inputs")
     
-    """
-        TO DO : A retirer si on instancie les pièces de manière auto
-    """
+    # TODO : A retirer si on instancie les pièces de manière auto
     get_tree().call_group("Gold", "connect", "coin_collected", 
         $Player/Camera2D/CanvasLayer/GUI, "_update_score")
         
@@ -75,18 +79,14 @@ func _ready():
     # Pour que l'on entende bien la musique partout
     $Music.position = $Player.position
 
+func _update_biome(_body):
+    biome_index += 1
+    emit_signal("biome_change", self.get_biome_inputs(biome_index))
 
-
-func _process(delta):
-    # avoid crashes in the last biome
-    if biome_index + 1 < biome_inputs.size():
-        var biome_depth = self.get_biome_depth(biome_index + 1)
-        if $Player.depth > biome_depth:
-            biome_index += 1
-            emit_signal("biome_change", self.get_biome_inputs(biome_index))
-            
-    # Affichage du temps restant avant de démarrer le jeu
-    $ReadyText.text = "Ready ? " + str(int($StartTimer.time_left))
+func _process(delta):    
+    if $ReadyText.visible:
+        # Affichage du temps restant avant de démarrer le jeu
+        $ReadyText.text = "Ready ? " + str(int($StartTimer.time_left))
 
 
 func _on_StartTimer_timeout():
