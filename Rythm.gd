@@ -27,8 +27,6 @@ func _reset_keys_pressed():
             "is_current": i == 0,
         })
     input_index = 0
-    if biome_inputs:
-        $Key.text = self.get_current_input()
     rythm_fucked = false
     emit_signal("keys_pressed_signal", keys_pressed)
 
@@ -67,7 +65,6 @@ func _on_key_timer_timeout():
     else:
         emit_signal("keys_pressed_signal", keys_pressed)
         input_index += 1
-    $Key.text = self.get_current_input()
     input_was_pressed = false
 
 func _process(delta):

@@ -1,6 +1,6 @@
 extends Node2D
 
-var MARGIN_X = 10
+var MARGIN_X = 10.0
 var INPUTS_GROUP = "BreathInputs"
 
 var input_rotation = {
@@ -45,22 +45,20 @@ func _display_keys_to_press(keys_pressed):
         - que la touche actuelle à presser est la deuxième (is_current=true)
     """
     get_tree().call_group(INPUTS_GROUP, "queue_free")
+    var center = get_viewport().size.x / 2.0
     for i in len(keys_pressed):
         var input = keys_pressed[i]["key"]
         var result = keys_pressed[i]["result"]
         var sprite = Sprite.new()
         sprite.set_texture(arrows_pictures[result])
-        sprite.position = Vector2(i * (sprite.texture.get_size().x * sprite.scale.x + MARGIN_X), 0)
+        var sprite_width = sprite.texture.get_size().x * sprite.scale.x + MARGIN_X
+        # disgusting method to center the breathing keys
+        sprite.position = Vector2(center - (len(keys_pressed) * (sprite_width) / 2) + i * sprite_width, 0)
         sprite.rotation_degrees = input_rotation[input]
         sprite.add_to_group(INPUTS_GROUP)
+
         add_child(sprite)
         if keys_pressed[i]["is_current"]:
             var current_input_sprite = sprite.duplicate()
             current_input_sprite.set_texture(current_arrow_picture)
             add_child(current_input_sprite)
-        
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
