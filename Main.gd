@@ -59,6 +59,7 @@ func _ready():
         
     # Gestion de la fin de partie
     $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen.connect("game_over",self, "_game_over")
+    $Player.connect("end_game", self, "_game_over")
     
     background_size = $TextureRect.texture.get_size()
     $Player/Camera2D.limit_bottom = background_size.y

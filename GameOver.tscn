@@ -17,6 +17,16 @@ font_data = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="GameOver" type="TextureRect" parent="."]
+visible = false
+margin_right = 700.0
+margin_bottom = 3646.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameEnd" type="TextureRect" parent="."]
+visible = false
 margin_right = 700.0
 margin_bottom = 3646.0
 texture = ExtResource( 1 )
@@ -53,13 +63,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Depth" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -88.8173
+margin_top = 374.691
+margin_right = 91.1827
+margin_bottom = 437.691
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Depth"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Retry" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -40.0
-margin_top = 399.231
+margin_top = 469.395
 margin_right = 40.0
-margin_bottom = 479.231
+margin_bottom = 549.395
 texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false

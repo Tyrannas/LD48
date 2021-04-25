@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal end_game
+
 var GRAVITY
 var SPEED = 300.0
 var velocity = Vector2.ZERO
@@ -7,6 +9,7 @@ var screen_size
 var angle_pipe = 0
 var flip_sprite = false
 var depth = 0
+var MAX_DEPTH
 
 
 func _ready():
@@ -50,6 +53,8 @@ func _physics_process(delta):
     $Pipe.scale.y = dist_player_top_viewport / max_pipe_size.y
     
     depth = int(position.y / 10.0)
+    if depth == MAX_DEPTH :
+        emit_signal("end_game")
     $Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(depth) + "m"
 
 
