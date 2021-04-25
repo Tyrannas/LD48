@@ -5,10 +5,12 @@ var SPEED = 300.0
 var velocity = Vector2.ZERO
 var screen_size
 var angle_pipe = 0
+var flip_sprite = false
 
 
 func _ready():
     screen_size = get_viewport_rect().size
+    $AnimationPlayer.play("Bouncing")
 
 func _physics_process(delta):
     var direction = get_direction()
@@ -19,9 +21,18 @@ func _physics_process(delta):
     var top_of_viewport = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().position.y)
     var dist_player_top_viewport = player_position_relative.distance_to(top_of_viewport)
     
+    
     velocity.x = SPEED * direction.x
     velocity.y = GRAVITY * delta
     velocity = move_and_slide(velocity)
+    
+    # Symétrie en cas de changement de côté
+    if velocity.x < 0 :
+        flip_sprite = false
+    elif velocity.x > 0 :
+        flip_sprite = true
+    
+    $Sprite.flip_h = flip_sprite
     
     # Pour éviter que le personnage sorte de l'écran (fonction clamp)
     # Et qu'il ne soit pas découpé en 2 (le clamp prenant le milieu de la sprite)
