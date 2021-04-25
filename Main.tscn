@@ -23,10 +23,11 @@ __meta__ = {
 position = Vector2( 340.106, 176.227 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( -0.840942, -0.840942 )
 current = true
 limit_left = 0
 limit_top = 0
-limit_right = 700
+limit_right = 680
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
 

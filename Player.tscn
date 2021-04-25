@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/player.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/lifebar_bg.png" type="Texture" id=3]
+[ext_resource path="res://assets/tuyau.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.9498, 36.7522 )
@@ -12,10 +12,10 @@ position = Vector2( 371.535, 171.737 )
 script = ExtResource( 2 )
 
 [node name="Pipe" type="Sprite" parent="."]
-position = Vector2( -120.784, 46.9553 )
-scale = Vector2( 0.7, 0.2 )
+position = Vector2( -2.1633, -25.3001 )
 texture = ExtResource( 3 )
 centered = false
+offset = Vector2( -33.1442, -503.403 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.35, 0.35 )

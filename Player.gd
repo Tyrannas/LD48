@@ -4,7 +4,7 @@ var GRAVITY = 3000.0
 var SPEED = 300.0
 var velocity = Vector2.ZERO
 var screen_size
-var angle_pipe = 90
+var angle_pipe = 0
 
 
 func _ready():
@@ -14,8 +14,10 @@ func _physics_process(delta):
     var direction = get_direction()
     var background_size = get_parent().background_size
     var sprite_size = $Sprite.texture.get_size() * $Sprite.scale
-    var dist_player_top_camera = get_global_transform_with_canvas().origin.y
-#    var max_pipe_size = $Pipe.texture.get_size()
+    var player_position_relative = get_global_transform_with_canvas().origin
+    var max_pipe_size = $Pipe.texture.get_size()
+    var top_of_viewport = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().position.y)
+    var dist_player_top_viewport = player_position_relative.distance_to(top_of_viewport)
     
     velocity.x = SPEED * direction.x
     velocity.y = GRAVITY * delta
@@ -29,8 +31,8 @@ func _physics_process(delta):
     
     $Pipe.position = Vector2(0,0)
     angle_pipe = $Pipe.get_global_transform().origin.angle_to_point(Vector2(background_size.x / 2, 0))
-    $Pipe.rotation = angle_pipe + PI
-    $Pipe.scale.y = dist_player_top_camera / 500
+    # $Pipe.rotation = angle_pipe + PI
+    $Pipe.scale.y = dist_player_top_viewport / max_pipe_size.y
 
     $Camera2D/CanvasLayer/GUI/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(int(position.y / 10.0)) + "m"
 
@@ -39,4 +41,3 @@ func get_direction() -> Vector2:
     return Vector2(Input.get_action_strength("move_right") - 
         Input.get_action_strength("move_left"),
         1.0)
-
