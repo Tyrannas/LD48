@@ -27,7 +27,7 @@ func _ready():
                    $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen, 
                    "_update_oxygen")
     self.connect("biome_change", $Rythm, "_update_biome_inputs")
-    emit_signal("biome_change", self.get_inputs_from_depth())
+#    emit_signal("biome_change", self.get_inputs_from_depth())
     
     """
         TO DO : A retirer si on instancie les pièces de manière auto
@@ -37,6 +37,9 @@ func _ready():
     
     background_size = $TextureRect.texture.get_size()
     $Player/Camera2D.limit_bottom = background_size.y
+    
+    $Player.visible = false
+
 
 func _process(delta):
     # avoid crashes in the last biome
@@ -49,3 +52,11 @@ func _process(delta):
             emit_signal("biome_change", self.get_inputs_from_depth())
             
 
+func _on_StartTimer_timeout():
+    new_game()
+
+func new_game():
+    emit_signal("biome_change", self.get_inputs_from_depth())
+    $Player.position = Vector2(340.106,176.227)
+    $Player.visible = true
+    
