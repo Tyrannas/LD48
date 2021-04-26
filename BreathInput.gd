@@ -2,6 +2,7 @@ extends Node2D
 
 var MARGIN_X = 10.0
 var INPUTS_GROUP = "BreathInputs"
+var OFFSET_INPUTS_Y = 675
 
 var input_rotation = {
     'ui_up': 0,
@@ -16,7 +17,7 @@ var arrows_pictures = {
     1: load("res://assets/arrow_white.png")
 }
 
-var current_arrow_picture = load("res://assets/light.png")
+var current_arrow_picture = load("res://assets/light_white.png")
 
 var center = 0
 
@@ -29,7 +30,7 @@ func get_key_sprites(input, result, keys_length, index):
     sprite.rotation_degrees = input_rotation[input]
     var sprite_width = sprite.texture.get_size().x * sprite.scale.x + MARGIN_X
     # disgusting method to center the breathing keys
-    sprite.position = Vector2(center - (keys_length * (sprite_width) / 2) + index * sprite_width, 0)
+    sprite.position = Vector2(center - (keys_length * (sprite_width) / 2) + index * sprite_width, OFFSET_INPUTS_Y)
     return sprite
 
 func _display_keys_to_press(keys_pressed):

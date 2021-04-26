@@ -125,9 +125,6 @@ func _ready():
     self.connect("biome_signal", $Rythm, "_update_biome_inputs")
     $Player/FadeOut.connect('tween_completed', self, '_stop_music')  
     
-    # TODO : A retirer si on instancie les pièces de manière auto
-#    get_tree().call_group("Gold", "connect", "coin_collected", GUI, "_update_score")
-    
     Oxygen.connect("combo", GUI, "_update_combo_multiplier")
     $Rythm.connect("combo", GUI, "_update_combo_multiplier")
     

@@ -7,7 +7,7 @@
 [ext_resource path="res://BreathInput.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=7]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 45
 font_data = ExtResource( 7 )
 
@@ -71,7 +71,7 @@ margin_left = -8.08371
 margin_top = -66.0476
 margin_right = -8.08372
 margin_bottom = 10.9524
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Oxygen"
 align = 1
@@ -136,6 +136,7 @@ __meta__ = {
 }
 
 [node name="Combo" type="Label" parent="VBoxContainer/HBoxContainer/ItemsOxygen/Items/Gold/Background"]
+visible = false
 anchor_left = -0.0105948
 anchor_top = 1.0
 anchor_right = 0.989405

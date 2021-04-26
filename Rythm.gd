@@ -11,7 +11,7 @@ var keys_pressed = []
 var input_was_pressed = false
 var rythm_fucked = false
 var new_biome_infos = {}
-    
+
 func _ready():
     $KeyTimer.connect("timeout", self, "_on_key_timer_timeout")    
 
