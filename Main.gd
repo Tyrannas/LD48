@@ -61,7 +61,8 @@ func instantiate_biome_delimiters():
         var inputs = self.get_biome_inputs(biome_i)
         var breah_input_node = $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput
         for input_i in len(inputs):
-            var key_sprite = breah_input_node.get_key_sprites(inputs[input_i], 0, len(inputs), input_i)
+#            var result = 1 if input_i % 2 else - 1
+            var key_sprite = breah_input_node.get_key_sprites(inputs[input_i], 1, len(inputs), input_i)
             key_sprite.position.x += RANDOM_X_OFFSET
             key_sprite.position.y = biome_depth
             add_child(key_sprite)
