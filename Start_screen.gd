@@ -6,6 +6,7 @@ func _ready():
     $Start.connect("pressed", self, "_on_Button_pressed")
     $ArrowLeft.play()
     $ArrowRight.play()
+    $Sailors.play()
     
 func _on_Button_pressed():
     get_tree().change_scene("res://Main.tscn")
