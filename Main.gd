@@ -181,7 +181,7 @@ func new_game():
     $ReadyText.visible = false
     emit_signal("biome_signal", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
     $Player.GRAVITY = 3000.0
-    $Player.position = Vector2(340.106,176.227)
+    $Player.position.y = 176.227
     $Player.visible = true
     $Plouf.play()
     
