@@ -5,3 +5,4 @@ var is_dead = false
 var is_retry = false
 var depth = 0
 var combo_multiplier = 1
+var coin_value = 10

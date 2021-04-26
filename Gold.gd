@@ -2,8 +2,6 @@ extends Area2D
 
 signal coin_collected
 
-var COIN_VALUE = 10
-
 func _on_body_entered(_body):
     """
         Le sprite.visible = false permet de ne plus afficher la pièce à 
@@ -12,7 +10,7 @@ func _on_body_entered(_body):
     """
     $AnimatedSprite.visible = false
     $Sound.play()
-    Global.score += COIN_VALUE * Global.combo_multiplier
+    Global.score += Global.coin_value * Global.combo_multiplier
     emit_signal("coin_collected")
     yield($Sound, "finished")
     queue_free()

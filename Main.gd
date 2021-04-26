@@ -30,6 +30,7 @@ onready var biome_infos = [
         'music': $Player/Music,
         'bpm': 60.0,
         'sprites': {"object": Algue, "number": 2},
+        'coin_value': 10,
     },
     {
         'depth': 100,
@@ -37,6 +38,7 @@ onready var biome_infos = [
         'music': $Player/Music2,
         'bpm': 120.0,
         'sprites': {"object": Caillou, "number": 1},
+        'coin_value': 20,
     },
     {
         'depth': 300,
@@ -44,6 +46,7 @@ onready var biome_infos = [
         'music': $Player/Music3,
         'bpm': 220.0,
         'sprites': {"object": Kraken, "number": 2},
+        'coin_value': 30,
     },
 ]
 
@@ -59,6 +62,9 @@ func get_biome_bpm(index):
 func get_biome_sprites(index):
     return biome_infos[index]['sprites']
     
+func get_biome_coin_value(index):
+    return biome_infos[index]['coin_value']
+
 func instantiate_biome_delimiters():
     # we skip the first biome
     for biome_i in len(biome_infos):
@@ -165,6 +171,7 @@ func _update_biome(_body):
     biome_index += 1
     self.fade_out(current_music_player)
     self.fade_in()
+    Global.coin_value = self.get_biome_coin_value(biome_index)
     emit_signal("biome_signal", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
 
 func _process(_delta):    
@@ -178,6 +185,7 @@ func _on_StartTimer_timeout():
 func new_game():
     Global.score = 0
     $ReadyText.visible = false
+    Global.coin_value = self.get_biome_coin_value(biome_index)
     emit_signal("biome_signal", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
     $Player.GRAVITY = 3000.0
     $Player.position.y = 176.227
