@@ -61,28 +61,30 @@ func instantiate_biome_delimiters():
         var inputs = self.get_biome_inputs(biome_i)
         var breah_input_node = $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput
         for input_i in len(inputs):
-#            var result = 1 if input_i % 2 else - 1
             var key_sprite = breah_input_node.get_key_sprites(inputs[input_i], 1, len(inputs), input_i)
             key_sprite.position.x += RANDOM_X_OFFSET
             key_sprite.position.y = biome_depth
             add_child(key_sprite)
 
 func _ready():
+    var GUI = $Player/Camera2D/CanvasLayer/GUI/
+    var Oxygen = $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen
     $Rythm.connect("keys_pressed_signal", 
                    $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput,
                    "_display_keys_to_press")
-    $Rythm.connect("oxygen_signal", 
-                   $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen, 
-                   "_update_oxygen")
+    $Rythm.connect("oxygen_signal", Oxygen, "_update_oxygen")
     self.connect("biome_change", $Rythm, "_update_biome_inputs")
     $Player/FadeOut.connect('tween_completed', self, '_stop_music')  
     
     # TODO : A retirer si on instancie les pièces de manière auto
-    get_tree().call_group("Gold", "connect", "coin_collected", 
-        $Player/Camera2D/CanvasLayer/GUI, "_update_score")
+    get_tree().call_group("Gold", "connect", "coin_collected", GUI, "_update_score")
+    
+    Oxygen.connect("combo", GUI, "_update_combo_multiplier")
+    $Rythm.connect("combo", GUI, "_update_combo_multiplier")
+    
         
     # Gestion de la fin de partie
-    $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen.connect("game_over",self, "_game_over")
+    Oxygen.connect("game_over", self, "_game_over")
     $Player.connect("end_game", self, "_game_over")
     
     background_size = $TextureRect.texture.get_size()

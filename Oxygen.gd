@@ -1,6 +1,7 @@
 extends Node2D
 
 signal game_over
+signal combo
 
 export var MAX_OXYGEN = 10
 export var OXYGEN_LOST = 1 # when failing the rythm
@@ -27,16 +28,16 @@ func _update_oxygen(rythm_fucked):
         - false s'il faut le diminuer (rythme raté)
     """
     if rythm_fucked:
-        #TODO : SOUND DOES NOT WORK YET
         $Gloups.play()
         oxygen = max(oxygen - OXYGEN_LOST, 0)
         if oxygen == 0 :
             Global.is_dead = true
-            emit_signal("game_over")
+            emit_signal("game_over") 
     else:
-        #TODO : SOUND DOES NOT WORK YET
-        $Inhale.play()
+        $Breath.play()
         oxygen = min(oxygen + OXYGEN_GAINED, MAX_OXYGEN)
+        Global.combo_multiplier += 1
+        emit_signal("combo")
     for i in oxygen:
         logos[i].visible = true
     for i in range(oxygen, MAX_OXYGEN):

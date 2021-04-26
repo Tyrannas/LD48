@@ -2,6 +2,7 @@ extends Node2D
 
 signal keys_pressed_signal
 signal oxygen_signal
+signal combo
 
 export var RYTHM_DURATION = 2.0 # seconds
 
@@ -33,6 +34,8 @@ func _reset_keys_pressed():
 func update_keys_pressed_result(result, index=input_index):
     if result == -1:
         rythm_fucked = true
+        Global.combo_multiplier = 1
+        emit_signal('combo')
         for i in len(keys_pressed):
             keys_pressed[i]['result'] = result
     else:

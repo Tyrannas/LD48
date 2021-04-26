@@ -66,12 +66,12 @@ autoplay = true
 [node name="Gold2" parent="." groups=[
 "Gold",
 ] instance=ExtResource( 7 )]
-position = Vector2( 409.16, 490.046 )
+position = Vector2( 349.16, 497.046 )
 
 [node name="Gold" parent="." groups=[
 "Gold",
 ] instance=ExtResource( 7 )]
-position = Vector2( 446.332, 338.213 )
+position = Vector2( 347.332, 382.213 )
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 5.0
