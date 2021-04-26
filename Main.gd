@@ -34,14 +34,14 @@ var biome_infos = [
     {
         'depth': 100,
         'inputs': ['ui_up', 'ui_up', 'ui_right', 'ui_left'],
-        'music': "pom_pom_pom.gog",
+        'music': "pom_pom_pom.ogg",
         'bpm': 120.0,
         'sprites': {"object": Caillou, "number": 1},
     },
     {
         'depth': 300,
         'inputs': ['ui_left', 'ui_right', 'ui_up', 'ui_down', 'ui_left', 'ui_right'],
-        'music': "tibidibidi.gog",
+        'music': "tibidibidi.ogg",
         'bpm': 220.0,
         'sprites': {"object": Kraken, "number": 2},
     },
