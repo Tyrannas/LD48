@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/inhale.wav-ceae389d0e4593c971d1fc133a8735c9.sample"
+path="res://.import/tibidibidi.wav-6f797947b876a9ab69b24fecb8b83b85.sample"
 
 [deps]
 
-source_file="res://assets/music/inhale.wav"
-dest_files=[ "res://.import/inhale.wav-ceae389d0e4593c971d1fc133a8735c9.sample" ]
+source_file="res://assets/music/tibidibidi.wav"
+dest_files=[ "res://.import/tibidibidi.wav-6f797947b876a9ab69b24fecb8b83b85.sample" ]
 
 [params]
 
