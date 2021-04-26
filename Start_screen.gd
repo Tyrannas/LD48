@@ -7,6 +7,8 @@ func _ready():
     $ArrowLeft.play()
     $ArrowRight.play()
     $Sailors.play()
+    $Keys_left.play()
+    $Keys_right.play()
     
 func _on_Button_pressed():
     get_tree().change_scene("res://Main.tscn")

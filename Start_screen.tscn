@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/font/Writing.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Start.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://assets/marins_small.png" type="Texture" id=14]
 [ext_resource path="res://assets/marins_small2.png" type="Texture" id=15]
+[ext_resource path="res://assets/touch_clavier_white.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -26,14 +27,14 @@ font_data = ExtResource( 13 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "Left",
-"speed": 2.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "Right",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Left",
 "speed": 2.0
 } ]
 
@@ -48,6 +49,22 @@ animations = [ {
 [sub_resource type="DynamicFont" id=5]
 size = 50
 font_data = ExtResource( 13 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "left",
+"speed": 2.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "right",
+"speed": 2.0
+} ]
 
 [node name="Start_screen" type="CanvasLayer"]
 script = ExtResource( 4 )
@@ -64,9 +81,9 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -293.5
-margin_top = 40.222
+margin_top = 41.2815
 margin_right = 317.5
-margin_bottom = 319.222
+margin_bottom = 320.281
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -86,14 +103,14 @@ text = "Dive Dive Revolution"
 align = 1
 
 [node name="Start" type="TextureButton" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -94.4308
-margin_top = -265.671
-margin_right = 295.569
-margin_bottom = -49.6704
+anchor_left = 0.505
+anchor_top = 0.336
+anchor_right = 0.505
+anchor_bottom = 0.336
+margin_left = -97.8308
+margin_top = -53.9518
+margin_right = 292.169
+margin_bottom = 162.049
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 2 )
 __meta__ = {
@@ -165,9 +182,9 @@ __meta__ = {
 
 [node name="KeepTheBeat" type="Label" parent="."]
 margin_left = 321.584
-margin_top = 707.938
+margin_top = 634.835
 margin_right = 662.584
-margin_bottom = 802.938
+margin_bottom = 729.835
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "So keep the beat ! "
@@ -178,20 +195,21 @@ __meta__ = {
 }
 
 [node name="ArrowLeft" type="AnimatedSprite" parent="."]
-position = Vector2( 441.578, 802.792 )
+position = Vector2( 441.578, 729.689 )
 rotation = -1.5708
 frames = SubResource( 3 )
 animation = "Left"
 frame = 1
 
 [node name="ArrowRight" type="AnimatedSprite" parent="."]
-position = Vector2( 511.741, 802.792 )
+position = Vector2( 511.741, 729.689 )
 rotation = 1.5708
 frames = SubResource( 3 )
 animation = "Right"
 
 [node name="Sailors" type="AnimatedSprite" parent="."]
-position = Vector2( 212.674, 786.227 )
+position = Vector2( 216.912, 703.903 )
+scale = Vector2( 0.685472, 0.685472 )
 frames = SubResource( 4 )
 animation = "Sailors"
 
@@ -208,14 +226,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="touch_clavier_right" type="Sprite" parent="."]
-position = Vector2( 511.001, 844.62 )
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 10 )
-
-[node name="touch_clavier_left" type="Sprite" parent="."]
-position = Vector2( 443.591, 844.62 )
+[node name="Keys_left" type="AnimatedSprite" parent="."]
+position = Vector2( 445.449, 767.955 )
 rotation = 1.5708
 scale = Vector2( 0.5, -0.5 )
-texture = ExtResource( 10 )
+frames = SubResource( 6 )
+animation = "left"
+
+[node name="Keys_right" type="AnimatedSprite" parent="."]
+position = Vector2( 511.376, 767.955 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 7 )
+animation = "right"
