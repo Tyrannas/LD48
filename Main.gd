@@ -99,6 +99,7 @@ func new_game():
     $Player.GRAVITY = 3000.0
     $Player.position = Vector2(340.106,176.227)
     $Player.visible = true
+    $Plouf.play()
     
 func _game_over():
     $Player.GRAVITY = 0.0

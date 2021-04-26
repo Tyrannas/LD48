@@ -27,11 +27,15 @@ func _update_oxygen(rythm_fucked):
         - false s'il faut le diminuer (rythme raté)
     """
     if rythm_fucked:
+        #TODO : SOUND DOES NOT WORK YET
+        $Gloups.play()
         oxygen = max(oxygen - OXYGEN_LOST, 0)
         if oxygen == 0 :
             Global.is_dead = true
             emit_signal("game_over")
     else:
+        #TODO : SOUND DOES NOT WORK YET
+        $Inhale.play()
         oxygen = min(oxygen + OXYGEN_GAINED, MAX_OXYGEN)
     for i in oxygen:
         logos[i].visible = true
