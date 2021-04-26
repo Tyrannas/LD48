@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.5814
-height = 41.3631
+height = 12.6078
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -61,10 +61,11 @@ shape = SubResource( 1 )
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
+frame = 4
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
