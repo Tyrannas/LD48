@@ -31,6 +31,7 @@ func _update_oxygen(rythm_fucked):
         $Gloups.play()
         oxygen = max(oxygen - OXYGEN_LOST, 0)
         if oxygen == 0 :
+            print(oxygen)
             Global.is_dead = true
             emit_signal("game_over") 
     else:

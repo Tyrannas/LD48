@@ -119,7 +119,7 @@ func spaw_coins():
         var coin = Coin.instance()
         coin.connect('coin_collected', $Player/Camera2D/CanvasLayer/GUI/, "_update_score")
         add_child(coin)
-        coin.position = Vector2(rng.randf_range(40, BACKGROUND_WIDTH - 40), i)
+        coin.position = Vector2(rng.randf_range(30, BACKGROUND_WIDTH - 30), i)
     
 func _ready():
     var GUI = $Player/Camera2D/CanvasLayer/GUI/
@@ -191,6 +191,7 @@ func new_game():
     $Player.position.y = 176.227
     $Player.visible = true
     $Plouf.play()
+    Global.is_dead = false
     
 func _game_over():
     $Player.GRAVITY = 0.0

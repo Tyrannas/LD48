@@ -8,7 +8,7 @@ var velocity = Vector2.ZERO
 var screen_size
 var angle_pipe = 0
 var flip_sprite = false
-var MAX_DEPTH = 494
+var MAX_DEPTH = 493
 
 
 func _ready():

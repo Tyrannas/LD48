@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/font/Writing.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Start.png" type="Texture" id=2]
@@ -21,6 +21,13 @@
 [ext_resource path="res://assets/touche_d_sans_fond.png" type="Texture" id=20]
 [ext_resource path="res://assets/touche_a_sans_fond.png" type="Texture" id=21]
 [ext_resource path="res://assets/touche_a.png" type="Texture" id=22]
+
+[sub_resource type="DynamicFontData" id=9]
+font_path = "res://assets/font/Abuget.ttf"
+
+[sub_resource type="DynamicFont" id=15]
+size = 90
+font_data = SubResource( 9 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -46,9 +53,6 @@ animations = [ {
 [sub_resource type="DynamicFont" id=5]
 size = 40
 font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFontData" id=9]
-font_path = "res://assets/font/Abuget.ttf"
 
 [sub_resource type="DynamicFont" id=10]
 size = 50
@@ -130,9 +134,9 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -293.5
-margin_top = 0.827217
+margin_top = -19.938
 margin_right = 317.5
-margin_bottom = 279.827
+margin_bottom = 259.061
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -146,7 +150,7 @@ margin_left = 20.0
 margin_top = 107.0
 margin_right = 591.0
 margin_bottom = 170.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Dive Dive Revolution"
 align = 1
@@ -299,17 +303,17 @@ scale = Vector2( 0.5, -0.5 )
 texture = ExtResource( 10 )
 
 [node name="Left_Q" type="AnimatedSprite" parent="."]
-position = Vector2( 278.269, 438.614 )
+position = Vector2( 281.242, 457.234 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 11 )
 
 [node name="Left_A" type="AnimatedSprite" parent="."]
-position = Vector2( 278.932, 472.557 )
+position = Vector2( 225.242, 457.234 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 13 )
 
 [node name="Right_D" type="AnimatedSprite" parent="."]
-position = Vector2( 417.706, 451.522 )
+position = Vector2( 420.131, 457.234 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 12 )
 
@@ -321,3 +325,15 @@ anims/Player = SubResource( 14 )
 position = Vector2( 552.528, 565.453 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
+
+[node name="Slash" type="Label" parent="."]
+margin_left = 247.355
+margin_top = 432.277
+margin_right = 287.355
+margin_bottom = 495.277
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
