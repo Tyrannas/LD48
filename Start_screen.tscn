@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/font/Writing.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Start.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/prefabs/player/PlayerAnimated.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/arrow_menu.png" type="Texture" id=6]
 [ext_resource path="res://assets/icon.png" type="Texture" id=7]
-[ext_resource path="res://assets/arrow_basic.png" type="Texture" id=8]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=9]
 [ext_resource path="res://assets/touch_clavier.png" type="Texture" id=10]
 [ext_resource path="res://assets/arrow_white_light.png" type="Texture" id=11]
@@ -16,14 +15,12 @@
 [ext_resource path="res://assets/marins_small.png" type="Texture" id=14]
 [ext_resource path="res://assets/marins_small2.png" type="Texture" id=15]
 [ext_resource path="res://assets/touch_clavier_white.png" type="Texture" id=16]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 13 )
+[ext_resource path="res://assets/touche_q_sans_fond.png" type="Texture" id=17]
+[ext_resource path="res://assets/touche_q.png" type="Texture" id=18]
+[ext_resource path="res://assets/touche_d.png" type="Texture" id=19]
+[ext_resource path="res://assets/touche_d_sans_fond.png" type="Texture" id=20]
+[ext_resource path="res://assets/touche_a_sans_fond.png" type="Texture" id=21]
+[ext_resource path="res://assets/touche_a.png" type="Texture" id=22]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -50,6 +47,17 @@ animations = [ {
 size = 40
 font_data = ExtResource( 13 )
 
+[sub_resource type="DynamicFontData" id=9]
+font_path = "res://assets/font/Abuget.ttf"
+
+[sub_resource type="DynamicFont" id=10]
+size = 50
+font_data = SubResource( 9 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+font_data = ExtResource( 13 )
+
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 10 ) ],
@@ -66,9 +74,46 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[sub_resource type="DynamicFont" id=8]
-size = 35
-font_data = ExtResource( 13 )
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="Animation" id=14]
+resource_name = "Player"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 323.748, 389.007 ), Vector2( 352.37, 389.007 ), Vector2( 323.748, 389.007 ) ]
+}
 
 [node name="Start_screen" type="CanvasLayer"]
 script = ExtResource( 4 )
@@ -98,9 +143,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Title_button"]
 margin_left = 20.0
-margin_top = 100.0
+margin_top = 107.0
 margin_right = 591.0
-margin_bottom = 177.0
+margin_bottom = 170.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Dive Dive Revolution"
@@ -121,82 +166,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 336.656, 389.007 )
-scale = Vector2( 0.7, 0.7 )
-
-[node name="Oxygen" type="Sprite" parent="Player"]
-position = Vector2( 344.427, 252.066 )
-texture = ExtResource( 7 )
-
-[node name="arrow_menu" type="Sprite" parent="Player"]
-position = Vector2( 170.467, -32.4769 )
+[node name="arrow_menu" type="Sprite" parent="."]
+position = Vector2( 455.983, 366.273 )
 rotation = 0.150098
-scale = Vector2( 0.590134, 0.570217 )
+scale = Vector2( 0.413094, 0.399152 )
 texture = ExtResource( 6 )
 
-[node name="Left" type="Sprite" parent="Player"]
-position = Vector2( -91.292, 83.8354 )
-scale = Vector2( 0.8, 1 )
-texture = ExtResource( 8 )
-
-[node name="Right" type="Sprite" parent="Player"]
-position = Vector2( 125.685, 83.0787 )
-rotation = -3.14159
-scale = Vector2( 0.8, -1 )
-texture = ExtResource( 8 )
-
-[node name="A" type="Label" parent="Player"]
-margin_left = -115.41
-margin_top = 83.7046
-margin_right = -43.4097
-margin_bottom = 172.704
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "A/Q"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="D" type="Label" parent="Player"]
-margin_left = 83.7505
-margin_top = 79.1662
-margin_right = 138.751
-margin_bottom = 168.166
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "D"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StayAlive" type="Label" parent="."]
-margin_left = 42.5981
-margin_top = 477.008
-margin_right = 596.598
-margin_bottom = 658.008
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Make sure you always have oxygen"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="KeepTheBeat" type="Label" parent="."]
-margin_left = 355.22
-margin_top = 581.859
-margin_right = 696.22
-margin_bottom = 676.859
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "So keep the beat ! "
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 323.748, 389.007 )
+scale = Vector2( 0.7, 0.7 )
 
 [node name="ArrowLeft" type="AnimatedSprite" parent="."]
 position = Vector2( 484.37, 668.633 )
@@ -230,28 +208,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Keys_left" type="AnimatedSprite" parent="."]
-position = Vector2( 498.252, 748.891 )
-rotation = 1.5708
-scale = Vector2( 0.5, -0.5 )
-frames = SubResource( 6 )
-animation = "left"
+[node name="StayAlive" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -277.0
+margin_top = 473.046
+margin_right = 277.0
+margin_bottom = 654.046
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Make sure you always have oxygen"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Keys_right" type="AnimatedSprite" parent="."]
-position = Vector2( 561.647, 748.556 )
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 7 )
-animation = "right"
+[node name="KeepTheBeat" type="Label" parent="."]
+margin_left = 359.462
+margin_top = 564.181
+margin_right = 700.462
+margin_bottom = 659.181
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "So keep the beat ! "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TouchesA_D" type="Label" parent="."]
-margin_left = 77.0356
-margin_top = 323.856
-margin_right = 283.036
-margin_bottom = 430.856
+margin_left = 98.9236
+margin_top = 350.234
+margin_right = 304.924
+margin_bottom = 457.234
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Use A/Q and D to move and collect coins"
+text = "Move to collect coins"
 align = 1
 valign = 1
 autowrap = true
@@ -280,6 +274,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Keys_left" type="AnimatedSprite" parent="."]
+position = Vector2( 498.252, 748.891 )
+rotation = 1.5708
+scale = Vector2( 0.5, -0.5 )
+frames = SubResource( 6 )
+animation = "left"
+
+[node name="Keys_right" type="AnimatedSprite" parent="."]
+position = Vector2( 561.647, 748.556 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 7 )
+animation = "right"
+
 [node name="Key_up" type="Sprite" parent="."]
 position = Vector2( 529.64, 716.522 )
 scale = Vector2( 0.5, 0.5 )
@@ -289,3 +297,27 @@ texture = ExtResource( 10 )
 position = Vector2( 530.307, 748.891 )
 scale = Vector2( 0.5, -0.5 )
 texture = ExtResource( 10 )
+
+[node name="Left_Q" type="AnimatedSprite" parent="."]
+position = Vector2( 278.269, 438.614 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 11 )
+
+[node name="Left_A" type="AnimatedSprite" parent="."]
+position = Vector2( 278.932, 472.557 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 13 )
+
+[node name="Right_D" type="AnimatedSprite" parent="."]
+position = Vector2( 417.706, 451.522 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Player")
+anims/Player = SubResource( 14 )
+
+[node name="Oxygen" type="Sprite" parent="."]
+position = Vector2( 552.528, 565.453 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 7 )
