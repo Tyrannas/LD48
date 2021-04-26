@@ -88,7 +88,6 @@ func populate_biomes():
     var start = 10
     for i in len(biome_infos):
         var end = get_biome_depth(i + 1) * 10 if i < len(biome_infos) - 1 else background_size.y
-        print("spawning for biome " + str(i) +  "from " + str(start) + "to " + str(end))
         # on spawn un nombre aléatoire de trucs à spawn
         # pour chacun de ces trucs on pick un y aléatoire entre start et biome depth
         # on pick un côté random (gauche ou droite)
