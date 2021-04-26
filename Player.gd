@@ -9,7 +9,7 @@ var screen_size
 var angle_pipe = 0
 var flip_sprite = false
 var depth = 0
-var MAX_DEPTH
+var MAX_DEPTH = 50000
 
 
 func _ready():
@@ -36,10 +36,6 @@ func _physics_process(delta):
     elif velocity.x > 0 :
         if $PlayerAnimated.scale.x > 0:
             $PlayerAnimated.scale.x = -$PlayerAnimated.scale.x
-
-    
-
-    
     
     # Pour éviter que le personnage sorte de l'écran (fonction clamp)
     # Et qu'il ne soit pas découpé en 2 (le clamp prenant le milieu de la sprite)
@@ -53,7 +49,7 @@ func _physics_process(delta):
     $Pipe.scale.y = dist_player_top_viewport / max_pipe_size.y
     
     depth = int(position.y / 10.0)
-    if depth == MAX_DEPTH :
+    if depth >= MAX_DEPTH :
         emit_signal("end_game")
     $Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(depth) + "m"
 

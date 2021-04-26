@@ -53,6 +53,11 @@ limit_right = 680
 margin_left = 3.23785
 margin_right = 4.23785
 
+[node name="Music" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2( 1.57602, -4.442 )
+stream = ExtResource( 4 )
+autoplay = true
+
 [node name="Rythm" parent="." instance=ExtResource( 3 )]
 
 [node name="Gold2" parent="." groups=[
@@ -69,11 +74,6 @@ position = Vector2( 446.332, 338.213 )
 wait_time = 5.0
 one_shot = true
 autostart = true
-
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 341.682, 171.785 )
-stream = ExtResource( 4 )
-autoplay = true
 
 [node name="Plouf" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )

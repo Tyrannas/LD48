@@ -11,15 +11,21 @@ var biome_index = 0
 
 var BiomeTransition = preload("res://BiomeTransition.tscn")
 
-
+var FIRST_BIOME_DEPTH = 50
+var SECOND_BIOME_DEPTH = 100
 #Pour chaque biome : 
 #- clef : profondeur à laquelle commence le biome
 #- valeur : touches à saisir séquentiellement pour respirer
 var biome_inputs = [
     {0: ['ui_down', 'ui_down', 'ui_down']},
-    {50: ['ui_left', 'ui_left', 'ui_left', 'ui_left']},
-    {100: ['ui_up', 'ui_up', 'ui_up']}
+    {FIRST_BIOME_DEPTH: ['ui_left', 'ui_left', 'ui_left', 'ui_left']},
+    {SECOND_BIOME_DEPTH: ['ui_up', 'ui_up', 'ui_up']}
 ]
+#var biome_musics = [
+#    {0: },
+#    {FIRST_BIOME_DEPTH: ['ui_left', 'ui_left', 'ui_left', 'ui_left']},
+#    {SECOND_BIOME_DEPTH: ['ui_up', 'ui_up', 'ui_up']}
+#]
 
 func get_biome_inputs(index):
     return biome_inputs[index].values()[0]
@@ -75,9 +81,6 @@ func _ready():
     
     if Global.is_retry == true : 
         $StartTimer.start(1)
-    
-    # Pour que l'on entende bien la musique partout
-    $Music.position = $Player.position
 
 func _update_biome(_body):
     biome_index += 1
