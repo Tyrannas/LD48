@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/emeralds_icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/Start.png" type="Texture" id=2]
 [ext_resource path="res://assets/background.png" type="Texture" id=3]
 [ext_resource path="res://Start_screen.gd" type="Script" id=4]
 
@@ -50,10 +50,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = -40.0
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -94.4308
+margin_top = -57.1812
+margin_right = 295.569
+margin_bottom = 158.819
+rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
