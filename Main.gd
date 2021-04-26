@@ -27,21 +27,24 @@ var Kraken = preload('res://assets/prefabs/kraken/kraken.tscn')
 var biome_infos = [
     {
         'depth': 0,
-        'inputs': ['ui_down', 'ui_down', 'ui_down'],
+        'inputs': ['ui_left', 'ui_right'],
+        'music': "music.ogg",
+        'bpm': 60.0,
         'sprites': {"object": Algue, "number": 2},
-        'music': "music.ogg"
     },
     {
         'depth': 163,
-        'inputs': ['ui_left', 'ui_left', 'ui_left', 'ui_left'],
+        'inputs': ['ui_down', 'ui_down', 'ui_right', 'ui_left'],
+        'music': "pom_pom_pom.wav",
+        'bpm': 120.0,
         'sprites': {"object": Caillou, "number": 1},
-        'music': "pom_pom_pom.wav"
     },
     {
         'depth': 329,
-        'inputs': ['ui_up', 'ui_up', 'ui_up'],
+        'inputs': ['ui_up', 'ui_left', 'ui_up', 'ui_right', 'ui_down', 'ui_down'],
+        'music': "tibidibidi.wav",
+        'bpm': 220.0,
         'sprites': {"object": Kraken, "number": 2},
-        'music': "music.ogg"
     },
 ]
 
@@ -50,6 +53,9 @@ func get_biome_inputs(index):
 
 func get_biome_depth(index):
     return biome_infos[index]['depth']
+    
+func get_biome_bpm(index):
+    return biome_infos[index]['bpm']
     
 func get_biome_sprites(index):
     return biome_infos[index]['sprites']
@@ -162,7 +168,7 @@ func _update_biome(_body):
     biome_index += 1
     self.fade_out(current_music_player)
     self.fade_in()
-    emit_signal("biome_change", self.get_biome_inputs(biome_index))
+    emit_signal("biome_change", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
 
 func _process(delta):    
     if $ReadyText.visible:
@@ -175,7 +181,7 @@ func _on_StartTimer_timeout():
 func new_game():
     Global.score = 0
     $ReadyText.visible = false
-    emit_signal("biome_change", self.get_biome_inputs(biome_index))
+    emit_signal("biome_change", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
     $Player.GRAVITY = 3000.0
     $Player.position = Vector2(340.106,176.227)
     $Player.visible = true

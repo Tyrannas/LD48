@@ -4,8 +4,6 @@ signal keys_pressed_signal
 signal oxygen_signal
 signal combo
 
-export var RYTHM_DURATION = 2.0 # seconds
-
 # Pour chaque biome : X touches à saisir séquentiellement pour respirer
 var biome_inputs = []
 var input_index = 0
@@ -45,12 +43,12 @@ func update_keys_pressed_current(index):
     for i in len(keys_pressed):
         keys_pressed[i]['is_current'] = i == index
 
-func _update_biome_inputs(new_inputs):
+func _update_biome_inputs(new_inputs, bpm):
     print("BIOME UPDATE")
     biome_inputs = new_inputs
     if not $KeyTimer.is_stopped():
         $KeyTimer.stop()
-    $KeyTimer.wait_time = RYTHM_DURATION / len(biome_inputs)
+    $KeyTimer.wait_time = 60.0 / bpm
     $KeyTimer.start()
     self._reset_keys_pressed()
 

@@ -3,7 +3,7 @@ extends Node2D
 signal game_over
 signal combo
 
-export var MAX_OXYGEN = 10
+export var MAX_OXYGEN = 50
 export var OXYGEN_LOST = 1 # when failing the rythm
 export var OXYGEN_GAINED = 1 # when succeding the rythm
 
