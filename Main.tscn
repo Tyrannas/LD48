@@ -53,10 +53,13 @@ limit_right = 680
 margin_left = 3.23785
 margin_right = 4.23785
 
-[node name="Music" type="AudioStreamPlayer2D" parent="Player"]
-position = Vector2( 1.57602, -4.442 )
+[node name="FadeOut" type="Tween" parent="Player"]
+
+[node name="Music" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 4 )
 autoplay = true
+
+[node name="FadeIn" type="Tween" parent="Player"]
 
 [node name="Rythm" parent="." instance=ExtResource( 3 )]
 
