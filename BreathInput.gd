@@ -2,7 +2,7 @@ extends Node2D
 
 var MARGIN_X = 10.0
 var INPUTS_GROUP = "BreathInputs"
-var OFFSET_INPUTS_Y = 675
+var OFFSET_INPUTS_Y = 500
 
 var input_rotation = {
     'ui_up': 0,
