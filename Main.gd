@@ -16,11 +16,13 @@ var fade_type = 1 # TRANS_SINE
 onready var current_music_player = get_node("Player/Music")
 
 var BiomeTransition = preload("res://BiomeTransition.tscn")
-
+var Coin = preload("res://Gold.tscn")
 var Algue = preload('res://assets/prefabs/algue/algue.tscn')
 var Caillou = preload('res://assets/prefabs/caillou/caillou.tscn')
 var Kraken = preload('res://assets/prefabs/kraken/kraken.tscn')
 
+var rng = RandomNumberGenerator.new()
+    
 var biome_infos = [
     {
         'depth': 0,
@@ -81,7 +83,6 @@ func instantiate_biome_delimiters():
             add_child(key_sprite)
 
 func populate_biomes():
-    var rng = RandomNumberGenerator.new()
     rng.randomize()
     # start spawning zone
     var start = 10
@@ -105,6 +106,15 @@ func populate_biomes():
                 instance.scale.x = -instance.scale.x
         start = end
         
+        
+func spaw_coins():
+    rng.randomize()
+    for i in range(50, background_size.y, 150):
+        var coin = Coin.instance()
+        coin.connect('coin_collected', $Player/Camera2D/CanvasLayer/GUI/, "_update_score")
+        add_child(coin)
+        coin.position = Vector2(rng.randf_range(20, background_size.x - 20), i)
+    
 func _ready():
     var GUI = $Player/Camera2D/CanvasLayer/GUI/
     var Oxygen = $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen
@@ -116,7 +126,7 @@ func _ready():
     $Player/FadeOut.connect('tween_completed', self, '_stop_music')  
     
     # TODO : A retirer si on instancie les pièces de manière auto
-    get_tree().call_group("Gold", "connect", "coin_collected", GUI, "_update_score")
+#    get_tree().call_group("Gold", "connect", "coin_collected", GUI, "_update_score")
     
     Oxygen.connect("combo", GUI, "_update_combo_multiplier")
     $Rythm.connect("combo", GUI, "_update_combo_multiplier")
@@ -132,6 +142,7 @@ func _ready():
     $Player.GRAVITY = 0.0
     self.instantiate_biome_delimiters()
     self.populate_biomes()
+    self.spaw_coins()
     
     if Global.is_retry == true : 
         $StartTimer.start(1)
