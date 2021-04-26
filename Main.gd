@@ -108,7 +108,7 @@ func populate_biomes():
         
 func spaw_coins():
     rng.randomize()
-    for i in range(50, background_size.y, 150):
+    for i in range(250, background_size.y, 150):
         var coin = Coin.instance()
         coin.connect('coin_collected', $Player/Camera2D/CanvasLayer/GUI/, "_update_score")
         add_child(coin)

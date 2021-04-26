@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/font/Writing.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Start.png" type="Texture" id=2]
 [ext_resource path="res://assets/background.png" type="Texture" id=3]
 [ext_resource path="res://Start_screen.gd" type="Script" id=4]
+[ext_resource path="res://assets/prefabs/player/PlayerAnimated.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/arrow_menu.png" type="Texture" id=6]
+[ext_resource path="res://assets/icon.png" type="Texture" id=7]
+[ext_resource path="res://assets/arrow_basic.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=1]
-size = 70
-font_data = ExtResource( 1 )
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
 
 [node name="Start_screen" type="CanvasLayer"]
 script = ExtResource( 4 )
@@ -40,7 +48,7 @@ margin_left = 20.0
 margin_top = 95.0
 margin_right = 591.0
 margin_bottom = 184.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Dive Dive Revolution"
 align = 1
@@ -59,3 +67,83 @@ texture_normal = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 346, 636.257 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Oxygen" type="Sprite" parent="Player"]
+position = Vector2( 289.438, 293.084 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 7 )
+
+[node name="arrow_menu" type="Sprite" parent="Player"]
+position = Vector2( 195.577, -11.1443 )
+rotation = 0.150098
+scale = Vector2( 0.8, 0.773 )
+texture = ExtResource( 6 )
+
+[node name="ItsYou" type="Label" parent="Player"]
+margin_left = 143.178
+margin_top = -92.1129
+margin_right = 282.178
+margin_bottom = -3.11285
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "It 's you"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Sprite" parent="Player"]
+position = Vector2( -58.7513, 151.187 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 8 )
+
+[node name="Right" type="Sprite" parent="Player"]
+position = Vector2( 104.106, 151.187 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 8 )
+
+[node name="A" type="Label" parent="Player"]
+margin_left = -63.496
+margin_top = 139.464
+margin_right = -21.496
+margin_bottom = 228.464
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="D" type="Label" parent="Player"]
+margin_left = 58.9606
+margin_top = 145.134
+margin_right = 113.961
+margin_bottom = 234.134
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StayAlive" type="Label" parent="Player"]
+margin_left = -309.84
+margin_top = 202.023
+margin_right = 213.16
+margin_bottom = 383.023
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Make sure you always have oxygen"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 129.112, 777.673 )
+frames = SubResource( 1 )

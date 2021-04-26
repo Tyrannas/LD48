@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
+[ext_resource path="res://assets/music/coins.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Gold.gd" type="Script" id=2]
-[ext_resource path="res://assets/music/coin.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/coin/Spritesheet.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -60,7 +60,8 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 1 )
+attenuation = 24.2515
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
