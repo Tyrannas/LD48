@@ -59,7 +59,6 @@ func _display_keys_to_press(keys_pressed):
         - que la touche actuelle à presser est la deuxième (is_current=true)
     """
     get_tree().call_group(INPUTS_GROUP, "queue_free")
-    
     for i in len(keys_pressed):
         var key_pressed = keys_pressed[i]
         var sprite = self.get_key_sprites(key_pressed['key'], key_pressed['result'], len(keys_pressed), i)

@@ -91,4 +91,4 @@ func _process(_delta):
                     # (except if it's the last note of the combo)
                     if not self.is_last_note_of_rythm():
                         self.update_keys_pressed_result(-1, input_index + 1)
-            emit_signal("keys_pressed_signal", keys_pressed)
+                emit_signal("keys_pressed_signal", keys_pressed)
