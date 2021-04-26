@@ -17,7 +17,6 @@ func _ready():
         self.add_child(t)
         t.start()
         yield(t, "timeout")
-        emit_signal("end_game")
         $GameEnd/AnimationPlayer.play("Remove_the_head")
         $GameEnd/EasterEgg.visible = true
         
