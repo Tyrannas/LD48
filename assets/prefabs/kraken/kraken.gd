@@ -10,6 +10,8 @@ var animations = ["rest", "rest2"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
     rng.randomize()
+    var scale_nb = rng.randf_range(0.6, 1)
+    scale = scale * Vector2(scale_nb, scale_nb)
     $Skeleton2D/"1".rotation_degrees = rng.randf_range(-50, 50)
     var animation = rng.randi_range(0, len(animations) - 1)
     var speed = rng.randf_range(0.3, 0.7) * pow(-1, rng.randi() % 2)
