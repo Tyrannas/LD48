@@ -5,6 +5,7 @@ signal biome_change
 # When adding the breath inputs in the GUI, there is an offset of ~23 between the position and the 
 # Could not find where it came from (not from margin apparently)
 var RANDOM_X_OFFSET = 23
+var BACKGROUND_WIDTH = 680
 
 var background_size
 var biome_index = 0
@@ -16,6 +17,10 @@ onready var current_music_player = get_node("Player/Music")
 
 var BiomeTransition = preload("res://BiomeTransition.tscn")
 
+var Algue = preload('res://assets/prefabs/algue/algue.tscn')
+var Caillou = preload('res://assets/prefabs/caillou/caillou.tscn')
+var Kraken = preload('res://assets/prefabs/kraken/kraken.tscn')
+
 #Pour chaque biome : 
 #- clef : profondeur à laquelle commence le biome
 #- valeur : touches à saisir séquentiellement pour respirer
@@ -23,16 +28,19 @@ var biome_infos = [
     {
         'depth': 0,
         'inputs': ['ui_down', 'ui_down', 'ui_down'],
+        'sprites': {"object": Algue, "number": 2},
         'music': "music.ogg"
     },
     {
-        'depth': 50,
+        'depth': 163,
         'inputs': ['ui_left', 'ui_left', 'ui_left', 'ui_left'],
+        'sprites': {"object": Caillou, "number": 1},
         'music': "pom_pom_pom.wav"
     },
     {
-        'depth': 100,
+        'depth': 329,
         'inputs': ['ui_up', 'ui_up', 'ui_up'],
+        'sprites': {"object": Kraken, "number": 2},
         'music': "music.ogg"
     },
 ]
@@ -42,6 +50,9 @@ func get_biome_inputs(index):
 
 func get_biome_depth(index):
     return biome_infos[index]['depth']
+    
+func get_biome_sprites(index):
+    return biome_infos[index]['sprites']
     
 func instantiate_biome_delimiters():
     # we skip the first biome
@@ -66,6 +77,31 @@ func instantiate_biome_delimiters():
             key_sprite.position.y = biome_depth
             add_child(key_sprite)
 
+func populate_biomes():
+    var rng = RandomNumberGenerator.new()
+    rng.randomize()
+    # start spawning zone
+    var start = 10
+    for i in len(biome_infos):
+        var end = get_biome_depth(i + 1) * 10 if i < len(biome_infos) - 1 else background_size.y
+        print("spawning for biome " + str(i) +  "from " + str(start) + "to " + str(end))
+        # on spawn un nombre aléatoire de trucs à spawn
+        # pour chacun de ces trucs on pick un y aléatoire entre start et biome depth
+        # on pick un côté random (gauche ou droite)
+        # on créé l'instance, on l'add en child et on set la position
+        # todo: voir pour le offset des cailloux
+        var spawned = rng.randi_range(5, 10) * get_biome_sprites(i)["number"]
+        for j in spawned:
+            var y = rng.randf_range(start, end)
+            var flipped = rng.randf_range(0,1)
+            var instance = get_biome_sprites(i)["object"].instance()
+            add_child(instance)
+            instance.position = Vector2(-10, y)
+            if flipped > 0.5:
+                instance.position.x = BACKGROUND_WIDTH
+                instance.scale.x = -instance.scale.x
+        start = end
+        
 func _ready():
     var GUI = $Player/Camera2D/CanvasLayer/GUI/
     var Oxygen = $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen
@@ -92,6 +128,7 @@ func _ready():
     
     $Player.GRAVITY = 0.0
     self.instantiate_biome_delimiters()
+    self.populate_biomes()
     
     if Global.is_retry == true : 
         $StartTimer.start(1)

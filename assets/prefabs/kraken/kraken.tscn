@@ -208,7 +208,7 @@ tracks/7/keys = {
 [node name="Kraken" type="Node2D"]
 position = Vector2( -3.96851, -0.793701 )
 rotation = -0.00989052
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.7, 0.7 )
 script = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
