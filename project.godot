@@ -28,6 +28,10 @@ config/icon="res://assets/icon.png"
 
 Global="*res://Global.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=680

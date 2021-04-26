@@ -1,6 +1,6 @@
 extends Node2D
 
-signal biome_change
+signal biome_signal
 
 # When adding the breath inputs in the GUI, there is an offset of ~23 between the position and the 
 # Could not find where it came from (not from margin apparently)
@@ -21,9 +21,6 @@ var Algue = preload('res://assets/prefabs/algue/algue.tscn')
 var Caillou = preload('res://assets/prefabs/caillou/caillou.tscn')
 var Kraken = preload('res://assets/prefabs/kraken/kraken.tscn')
 
-#Pour chaque biome : 
-#- clef : profondeur à laquelle commence le biome
-#- valeur : touches à saisir séquentiellement pour respirer
 var biome_infos = [
     {
         'depth': 0,
@@ -33,15 +30,15 @@ var biome_infos = [
         'sprites': {"object": Algue, "number": 2},
     },
     {
-        'depth': 163,
-        'inputs': ['ui_down', 'ui_down', 'ui_right', 'ui_left'],
+        'depth': 100,
+        'inputs': ['ui_up', 'ui_up', 'ui_right', 'ui_left'],
         'music': "pom_pom_pom.wav",
         'bpm': 120.0,
         'sprites': {"object": Caillou, "number": 1},
     },
     {
-        'depth': 329,
-        'inputs': ['ui_up', 'ui_left', 'ui_up', 'ui_right', 'ui_down', 'ui_down'],
+        'depth': 300,
+        'inputs': ['ui_left', 'ui_right', 'ui_up', 'ui_down', 'ui_left', 'ui_right'],
         'music': "tibidibidi.wav",
         'bpm': 220.0,
         'sprites': {"object": Kraken, "number": 2},
@@ -115,7 +112,7 @@ func _ready():
                    $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput,
                    "_display_keys_to_press")
     $Rythm.connect("oxygen_signal", Oxygen, "_update_oxygen")
-    self.connect("biome_change", $Rythm, "_update_biome_inputs")
+    self.connect("biome_signal", $Rythm, "_update_biome_inputs")
     $Player/FadeOut.connect('tween_completed', self, '_stop_music')  
     
     # TODO : A retirer si on instancie les pièces de manière auto
@@ -168,9 +165,9 @@ func _update_biome(_body):
     biome_index += 1
     self.fade_out(current_music_player)
     self.fade_in()
-    emit_signal("biome_change", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
+    emit_signal("biome_signal", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
 
-func _process(delta):    
+func _process(_delta):    
     if $ReadyText.visible:
         # Affichage du temps restant avant de démarrer le jeu
         $ReadyText.text = "Ready ? " + str(int($StartTimer.time_left))
@@ -181,7 +178,7 @@ func _on_StartTimer_timeout():
 func new_game():
     Global.score = 0
     $ReadyText.visible = false
-    emit_signal("biome_change", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
+    emit_signal("biome_signal", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
     $Player.GRAVITY = 3000.0
     $Player.position = Vector2(340.106,176.227)
     $Player.visible = true

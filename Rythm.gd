@@ -10,6 +10,7 @@ var input_index = 0
 var keys_pressed = []
 var input_was_pressed = false
 var rythm_fucked = false
+var new_biome_infos = {}
     
 func _ready():
     $KeyTimer.connect("timeout", self, "_on_key_timer_timeout")    
@@ -43,18 +44,23 @@ func update_keys_pressed_current(index):
     for i in len(keys_pressed):
         keys_pressed[i]['is_current'] = i == index
 
+func _update_biome_infos():
+    biome_inputs = new_biome_infos['inputs']
+    $KeyTimer.wait_time = 60.0 / new_biome_infos['bpm']
+    new_biome_infos = {}
+
 func _update_biome_inputs(new_inputs, bpm):
-    print("BIOME UPDATE")
-    biome_inputs = new_inputs
-    if not $KeyTimer.is_stopped():
-        $KeyTimer.stop()
-    $KeyTimer.wait_time = 60.0 / bpm
-    $KeyTimer.start()
-    self._reset_keys_pressed()
+    """The UI will be changed at the end of the rythm (in _on_key_timer_timeout)"""
+    new_biome_infos = {'inputs': new_inputs, 'bpm': bpm}
+    if not biome_inputs:
+        # Initialisation for the first biome
+        self._update_biome_infos()
+        $KeyTimer.start()
+        self._reset_keys_pressed()
 
 func is_last_note_of_rythm():
     return input_index == biome_inputs.size() - 1
-    
+
 func _on_key_timer_timeout():
     self.update_keys_pressed_current(input_index+1)
     if not input_was_pressed:
@@ -62,13 +68,15 @@ func _on_key_timer_timeout():
     # Si toutes les notes du rythme ont été jouées
     if self.is_last_note_of_rythm():
         emit_signal("oxygen_signal", rythm_fucked)
+        if new_biome_infos:
+            self._update_biome_infos()
         self._reset_keys_pressed()
     else:
         emit_signal("keys_pressed_signal", keys_pressed)
         input_index += 1
     input_was_pressed = false
 
-func _process(delta):
+func _process(_delta):
     if not rythm_fucked:
         for input in ["ui_left", "ui_right", "ui_up", "ui_down"]:
             if Input.is_action_just_pressed(input):

@@ -4,7 +4,7 @@ signal coin_collected
 
 var COIN_VALUE = 10
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
     """
         Le sprite.visible = false permet de ne plus afficher la pièce à 
         l'écran le temps que la musique se joue. Sinon, la pièce reste 
