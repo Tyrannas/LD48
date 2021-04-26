@@ -93,16 +93,17 @@ func populate_biomes():
         # on pick un côté random (gauche ou droite)
         # on créé l'instance, on l'add en child et on set la position
         # todo: voir pour le offset des cailloux
-        var spawned = rng.randi_range(5, 10) * get_biome_sprites(i)["number"]
-        for j in spawned:
-            var y = rng.randf_range(start, end)
+        var depth = start
+        while depth < end:
+            var y = rng.randf_range(depth - 100, depth + 100)
             var flipped = rng.randf_range(0,1)
             var instance = get_biome_sprites(i)["object"].instance()
             add_child(instance)
-            instance.position = Vector2(-10, y)
+            instance.position = Vector2(-20, y)
             if flipped > 0.5:
-                instance.position.x = BACKGROUND_WIDTH
+                instance.position.x = BACKGROUND_WIDTH + 20
                 instance.scale.x = -instance.scale.x
+            depth += 250 / get_biome_sprites(i)["number"]
         start = end
         
         
@@ -112,7 +113,7 @@ func spaw_coins():
         var coin = Coin.instance()
         coin.connect('coin_collected', $Player/Camera2D/CanvasLayer/GUI/, "_update_score")
         add_child(coin)
-        coin.position = Vector2(rng.randf_range(20, background_size.x - 20), i)
+        coin.position = Vector2(rng.randf_range(30, BACKGROUND_WIDTH - 30), i)
     
 func _ready():
     var GUI = $Player/Camera2D/CanvasLayer/GUI/
