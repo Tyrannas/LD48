@@ -137,6 +137,7 @@ margin_left = -293.5
 margin_top = -19.938
 margin_right = 317.5
 margin_bottom = 259.061
+size_flags_horizontal = 0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
