@@ -6,9 +6,9 @@ func _ready():
         $Text.text = "Game over"
     else :
         $GameEnd.visible = true
-        $Text.text = "Hourray !"
+        $Text.text = "Hurray !"
     $Score.text = "Score : " + str(Global.score)
-    $Depth.text = "Depth : " + str(Global.depth)
+    $Depth.text = "Depth : " + str(Global.depth) + "m"
 
 
 func _on_Retry_pressed():

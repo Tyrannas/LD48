@@ -81,6 +81,7 @@ autostart = true
 
 [node name="Plouf" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
-attenuation = 1.51572
+volume_db = 20.0
+attenuation = 5.85636
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
