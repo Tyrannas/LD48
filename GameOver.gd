@@ -8,7 +8,7 @@ func _ready():
         $GameEnd.visible = true
         $Text.text = "Hourray !"
     $Score.text = "Score : " + str(Global.score)
-    $Depth.text = "Depth : " 
+    $Depth.text = "Depth : " + str(Global.depth)
 
 
 func _on_Retry_pressed():

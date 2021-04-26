@@ -8,8 +8,7 @@ var velocity = Vector2.ZERO
 var screen_size
 var angle_pipe = 0
 var flip_sprite = false
-var depth = 0
-var MAX_DEPTH = 50000
+var MAX_DEPTH = 494
 
 
 func _ready():
@@ -48,10 +47,10 @@ func _physics_process(delta):
     # $Pipe.rotation = angle_pipe + PI
     $Pipe.scale.y = dist_player_top_viewport / max_pipe_size.y
     
-    depth = int(position.y / 10.0)
-    if depth >= MAX_DEPTH :
+    Global.depth = int(position.y / 10.0)
+    if Global.depth >= MAX_DEPTH :
         emit_signal("end_game")
-    $Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(depth) + "m"
+    $Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/HBoxContainer/Depth/Background/Number.text = str(Global.depth) + "m"
 
 
 func get_direction() -> Vector2:
