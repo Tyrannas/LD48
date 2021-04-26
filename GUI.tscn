@@ -16,7 +16,7 @@ size = 60
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 70
+size = 80
 font_data = ExtResource( 7 )
 
 [node name="GUI" type="MarginContainer"]
@@ -136,17 +136,16 @@ __meta__ = {
 }
 
 [node name="Combo" type="Label" parent="VBoxContainer/HBoxContainer/ItemsOxygen/Items/Gold/Background"]
-visible = false
 anchor_left = -0.0105948
 anchor_top = 1.0
 anchor_right = 0.989405
 anchor_bottom = 1.0
-margin_left = -26.4042
-margin_top = -18.3359
-margin_right = -26.4042
-margin_bottom = 70.6641
+margin_left = -27.4042
+margin_top = -24.3359
+margin_right = -27.4042
+margin_bottom = 64.6641
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.776471, 0.0980392, 0.00784314, 1 )
+custom_colors/font_color = Color( 0.894118, 0.466667, 0.0156863, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "x8"
 align = 1

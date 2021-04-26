@@ -16,7 +16,8 @@ func _ready():
     $KeyTimer.connect("timeout", self, "_on_key_timer_timeout")    
 
 func get_current_input():
-    return biome_inputs[input_index]
+    if biome_inputs:
+        return biome_inputs[input_index]
 
 func _reset_keys_pressed():
     keys_pressed = []
