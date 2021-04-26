@@ -140,8 +140,6 @@ func _ready():
     self.populate_biomes()
     self.spaw_coins()
     
-    if Global.is_retry == true : 
-        $StartTimer.start(1)
 
 func fade_out(stream_player):
     var tween_out = $Player/FadeOut
