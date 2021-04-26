@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/background.png" type="Texture" id=1]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://assets/music/music.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Main.gd" type="Script" id=5]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/music/pom_pom_pom.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/music/plouf.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/music/tibidibidi.ogg" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -54,11 +56,17 @@ margin_right = 4.23785
 
 [node name="FadeOut" type="Tween" parent="Player"]
 
+[node name="FadeIn" type="Tween" parent="Player"]
+
 [node name="Music" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 4 )
 autoplay = true
 
-[node name="FadeIn" type="Tween" parent="Player"]
+[node name="Music2" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 7 )
+
+[node name="Music3" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 10 )
 
 [node name="Rythm" parent="." instance=ExtResource( 3 )]
 

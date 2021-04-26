@@ -23,25 +23,25 @@ var Kraken = preload('res://assets/prefabs/kraken/kraken.tscn')
 
 var rng = RandomNumberGenerator.new()
     
-var biome_infos = [
+onready var biome_infos = [
     {
         'depth': 0,
         'inputs': ['ui_left', 'ui_right'],
-        'music': "music.ogg",
+        'music': $Player/Music,
         'bpm': 60.0,
         'sprites': {"object": Algue, "number": 2},
     },
     {
         'depth': 100,
         'inputs': ['ui_up', 'ui_up', 'ui_right', 'ui_left'],
-        'music': "pom_pom_pom.ogg",
+        'music': $Player/Music2,
         'bpm': 120.0,
         'sprites': {"object": Caillou, "number": 1},
     },
     {
         'depth': 300,
         'inputs': ['ui_left', 'ui_right', 'ui_up', 'ui_down', 'ui_left', 'ui_right'],
-        'music': "tibidibidi.ogg",
+        'music': $Player/Music3,
         'bpm': 220.0,
         'sprites': {"object": Kraken, "number": 2},
     },
@@ -150,19 +150,13 @@ func fade_out(stream_player):
     tween_out.start()
 
 func fade_in():
-    var audio_file = "res://assets/music/" + biome_infos[biome_index]['music']
-    if File.new().file_exists(audio_file):
-        var new_music_player = AudioStreamPlayer.new()
-        var sfx = load(audio_file)
-        new_music_player.set_stream(sfx)
-        new_music_player.volume_db = -80
-        add_child_below_node($Player, new_music_player)
-        new_music_player.play()
-        var tween_in = $Player/FadeIn
-         # tween music volume back to 0
-        tween_in.interpolate_property(new_music_player, "volume_db", -80, 0, fade_in_duration, fade_type, Tween.EASE_OUT, 0)
-        tween_in.start()
-        current_music_player = new_music_player
+    var new_music_player = biome_infos[biome_index]['music']
+    new_music_player.play()
+    var tween_in = $Player/FadeIn
+    # tween music volume back to 0
+    tween_in.interpolate_property(new_music_player, "volume_db", -80, 0, fade_in_duration, fade_type, Tween.EASE_OUT, 0)
+    tween_in.start()
+    current_music_player = new_music_player
        
 func _stop_music(object, _key):
     # stop the music -- otherwise it continues to run at silent volume
