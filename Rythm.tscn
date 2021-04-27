@@ -17,5 +17,3 @@ __meta__ = {
 }
 
 [node name="KeyTimer" type="Timer" parent="."]
-
-[node name="AcceptanceDelay" type="Timer" parent="."]
