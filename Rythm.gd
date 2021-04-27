@@ -109,7 +109,9 @@ func _validate_input(input, index=input_index):
     var input_to_check = get_current_input() if index == input_index  else biome_inputs[index]
     # est ce que c'est la bonne touche?
     if input == input_to_check:
-        update_keys_pressed_result(1, index)
+        # on ne doit pas pouvoir valider une note que l'on a déjà ratée
+        if keys_pressed[index]['result'] != - 1:
+            update_keys_pressed_result(1, index)
         if index != input_index and index == 0:
             # if the next key is the first one of the next sequence and was early pressed
             # prevent it from being reset
