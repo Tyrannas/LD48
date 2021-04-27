@@ -42,10 +42,7 @@ func update_keys_pressed_result(result, index=input_index):
         rythm_fucked = true
         Global.combo_multiplier = 1
         emit_signal('combo')
-        for i in len(keys_pressed):
-            keys_pressed[i]['result'] = result
-    else:
-        keys_pressed[index]['result'] = result
+    keys_pressed[index]['result'] = result
         
 func update_keys_pressed_current(index):
     for i in len(keys_pressed):
@@ -89,25 +86,24 @@ func __get_time():
     return String(time.hour) +":"+String(time.minute)+":"+String(time.second)
     
 func _process(_delta):
-    # TODO: handle feedback when rythmfucked is true
-    if not rythm_fucked:
-        for input in ["ui_left", "ui_right", "ui_up", "ui_down"]:
-            if Input.is_action_just_pressed(input):
-                if not input_was_pressed:
-                    # si une touche n'a pas déjà été validée pour cet interval
-                    _validate_input(input)
-                    input_was_pressed = true
+    # TODO: handle feedback when rythm_fucked is true
+    for input in ["ui_left", "ui_right", "ui_up", "ui_down"]:
+        if Input.is_action_just_pressed(input):
+            if not input_was_pressed:
+                # si une touche n'a pas déjà été validée pour cet interval
+                _validate_input(input)
+                input_was_pressed = true
+            else:
+                # If the player taps too early, the next note is wrong
+                # except if time left to complete <= wait_time / 3 and it's the right key
+                # then accept the key
+                if $KeyTimer.time_left < $KeyTimer.wait_time / 3:
+                    _validate_input(input, _get_next_index())
                 else:
-                    # If the player taps too early, the next note is wrong
-                    # except if time left to complete <= wait_time / 3 and it's the right key
-                    # then accept the key
-                    if $KeyTimer.time_left < $KeyTimer.wait_time / 3:
-                        _validate_input(input, _get_next_index())
-                    else:
-                        # else it's too early to validate the next key so set it failed
-                        update_keys_pressed_result(-1, _get_next_index())
+                    # else it's too early to validate the next key so set it failed
+                    update_keys_pressed_result(-1, _get_next_index())
 
-                emit_signal("keys_pressed_signal", keys_pressed)
+            emit_signal("keys_pressed_signal", keys_pressed)
 
 func _validate_input(input, index=input_index):
     var input_to_check = get_current_input() if index == input_index  else biome_inputs[index]
@@ -116,7 +112,7 @@ func _validate_input(input, index=input_index):
         update_keys_pressed_result(1, index)
         if index != input_index and index == 0:
             # if the next key is the first one of the next sequence and was early pressed
-            # prevent it from being reseted
+            # prevent it from being reset
             preserve_first = true
     else:
         update_keys_pressed_result(-1, index)
