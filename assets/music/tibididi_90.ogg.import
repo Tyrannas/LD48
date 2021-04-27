@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tibididi_90.ogg-11eab1ccecd9713bb6fadd31c741ee07.oggstr"
+
+[deps]
+
+source_file="res://assets/music/tibididi_90.ogg"
+dest_files=[ "res://.import/tibididi_90.ogg-11eab1ccecd9713bb6fadd31c741ee07.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

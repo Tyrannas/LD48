@@ -44,7 +44,7 @@ onready var biome_infos = [
         'depth': 250,
         'inputs': ['ui_left', 'ui_right', 'ui_up', 'ui_down', 'ui_left', 'ui_right'],
         'music': $Player/Music3,
-        'bpm': 180.0,
+        'bpm': 200.0,
         'sprites': {"object": Kraken, "number": 2},
         'coin_value': 30,
     },
