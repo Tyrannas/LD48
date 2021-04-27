@@ -51,6 +51,7 @@ func update_keys_pressed_current(index):
 func _update_biome_infos():
     biome_inputs = new_biome_infos['inputs']
     $KeyTimer.wait_time = 60.0 / new_biome_infos['bpm']
+    $KeyTimer.start()
     new_biome_infos = {}
 
 func _update_biome_inputs(new_inputs, bpm):
@@ -59,7 +60,6 @@ func _update_biome_inputs(new_inputs, bpm):
     if not biome_inputs:
         # Initialisation for the first biome
         _update_biome_infos()
-        $KeyTimer.start()
         _reset_keys_pressed()
 
 func is_last_note_of_rythm():
@@ -73,6 +73,7 @@ func _on_key_timer_timeout():
     if is_last_note_of_rythm():
         emit_signal("oxygen_signal", rythm_fucked)
         if new_biome_infos:
+            $KeyTimer.stop()
             _update_biome_infos()
         _reset_keys_pressed()
     else:
@@ -83,27 +84,28 @@ func _on_key_timer_timeout():
         
 func __get_time():
     var time = OS.get_time()
-    return String(time.hour) +":"+String(time.minute)+":"+String(time.second)
+    return String(time.hour) +":"+String(time.minute)+":"+String(time.second)+" - "
     
 func _process(_delta):
-    # TODO: handle feedback when rythm_fucked is true
-    for input in ["ui_left", "ui_right", "ui_up", "ui_down"]:
-        if Input.is_action_just_pressed(input):
-            if not input_was_pressed:
-                # si une touche n'a pas déjà été validée pour cet interval
-                _validate_input(input)
-                input_was_pressed = true
-            else:
-                # If the player taps too early, the next note is wrong
-                # except if time left to complete <= wait_time / 3 and it's the right key
-                # then accept the key
-                if $KeyTimer.time_left < $KeyTimer.wait_time / 3:
-                    _validate_input(input, _get_next_index())
+    # prevents crashes if breathing before the game starts for real
+    if keys_pressed:
+        for input in ["ui_left", "ui_right", "ui_up", "ui_down"]:
+            if Input.is_action_just_pressed(input):
+                if not input_was_pressed:
+                    # si une touche n'a pas déjà été validée pour cet interval
+                    _validate_input(input)
+                    input_was_pressed = true
                 else:
-                    # else it's too early to validate the next key so set it failed
-                    update_keys_pressed_result(-1, _get_next_index())
+                    # If the player taps too early, the next note is wrong
+                    # except if time left to complete <= wait_time / 3 and it's the right key
+                    # then accept the key
+                    if $KeyTimer.time_left < $KeyTimer.wait_time / 3:
+                        _validate_input(input, _get_next_index())
+                    else:
+                        # else it's too early to validate the next key so set it failed
+                        update_keys_pressed_result(-1, _get_next_index())
 
-            emit_signal("keys_pressed_signal", keys_pressed)
+                emit_signal("keys_pressed_signal", keys_pressed)
 
 func _validate_input(input, index=input_index):
     var input_to_check = get_current_input() if index == input_index  else biome_inputs[index]
