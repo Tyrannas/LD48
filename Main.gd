@@ -111,11 +111,10 @@ func populate_biomes():
                 instance.scale.x = -instance.scale.x
             depth += 250 / get_biome_sprites(i)["number"]
         start = end
-        
-        
+
 func spaw_coins():
     rng.randomize()
-    for i in range(250, background_size.y, 150):
+    for i in range(250, background_size.y, 100):
         var coin = Coin.instance()
         coin.connect('coin_collected', $Player/Camera2D/CanvasLayer/GUI/, "_update_score")
         add_child(coin)
@@ -146,7 +145,6 @@ func _ready():
     self.instantiate_biome_delimiters()
     self.populate_biomes()
     self.spaw_coins()
-    
 
 func fade_out(stream_player):
     var tween_out = $Player/FadeOut
