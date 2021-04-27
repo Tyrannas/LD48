@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/music/pom_pom_pom.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/music/plouf.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/music/tibidibidi.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/music/bateau_90.ogg" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -71,7 +71,7 @@ stream = ExtResource( 10 )
 [node name="Rythm" parent="." instance=ExtResource( 3 )]
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 3.5
 one_shot = true
 autostart = true
 

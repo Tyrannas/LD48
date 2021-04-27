@@ -22,23 +22,23 @@
 [ext_resource path="res://assets/touche_a_sans_fond.png" type="Texture" id=21]
 [ext_resource path="res://assets/touche_a.png" type="Texture" id=22]
 
-[sub_resource type="DynamicFontData" id=9]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://assets/font/Abuget.ttf"
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=2]
 size = 90
-font_data = SubResource( 9 )
+font_data = SubResource( 1 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "Right",
-"speed": 2.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "Left",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Right",
 "speed": 2.0
 } ]
 
@@ -54,15 +54,15 @@ animations = [ {
 size = 40
 font_data = ExtResource( 13 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=6]
 size = 50
-font_data = SubResource( 9 )
+font_data = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 40
 font_data = ExtResource( 13 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 10 ) ],
 "loop": true,
@@ -70,7 +70,7 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 16 ) ],
 "loop": true,
@@ -78,7 +78,7 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ ExtResource( 17 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 18 ) ],
 "loop": true,
@@ -86,7 +86,7 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [ ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 22 ) ],
 "loop": true,
@@ -102,7 +102,7 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 resource_name = "Player"
 length = 4.0
 loop = true
@@ -148,10 +148,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Title_button"]
 margin_left = 20.0
-margin_top = 107.0
+margin_top = 82.0
 margin_right = 591.0
-margin_bottom = 170.0
-custom_fonts/font = SubResource( 15 )
+margin_bottom = 196.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Dive Dive Revolution"
 align = 1
@@ -234,7 +234,7 @@ margin_left = 359.462
 margin_top = 564.181
 margin_right = 700.462
 margin_bottom = 659.181
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "So keep the beat ! "
 align = 1
@@ -248,7 +248,7 @@ margin_left = 98.9236
 margin_top = 350.234
 margin_right = 304.924
 margin_bottom = 457.234
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Move to collect coins"
 align = 1
@@ -269,7 +269,7 @@ margin_left = 252.449
 margin_top = 670.736
 margin_right = 455.449
 margin_bottom = 763.736
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Use your arrows to hit the beat"
 align = 1
@@ -283,14 +283,14 @@ __meta__ = {
 position = Vector2( 498.252, 748.891 )
 rotation = 1.5708
 scale = Vector2( 0.5, -0.5 )
-frames = SubResource( 6 )
+frames = SubResource( 8 )
 animation = "left"
 
 [node name="Keys_right" type="AnimatedSprite" parent="."]
 position = Vector2( 561.647, 748.556 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 7 )
+frames = SubResource( 9 )
 animation = "right"
 
 [node name="Key_up" type="Sprite" parent="."]
@@ -306,12 +306,12 @@ texture = ExtResource( 10 )
 [node name="Left_Q" type="AnimatedSprite" parent="."]
 position = Vector2( 281.242, 457.234 )
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 11 )
+frames = SubResource( 10 )
 
 [node name="Left_A" type="AnimatedSprite" parent="."]
 position = Vector2( 225.242, 457.234 )
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 13 )
+frames = SubResource( 11 )
 
 [node name="Right_D" type="AnimatedSprite" parent="."]
 position = Vector2( 420.131, 457.234 )
@@ -320,7 +320,7 @@ frames = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Player")
-anims/Player = SubResource( 14 )
+anims/Player = SubResource( 13 )
 
 [node name="Oxygen" type="Sprite" parent="."]
 position = Vector2( 552.528, 565.453 )
