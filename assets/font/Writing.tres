@@ -5,4 +5,5 @@ font_path = "res://assets/font/Abuget.ttf"
 
 [resource]
 size = 50
+outline_color = Color( 0.807843, 0.784314, 0.756863, 1 )
 font_data = SubResource( 1 )

@@ -1,24 +1,15 @@
 extends CanvasLayer
 
-signal start_game
 
 func _ready():
-    $Start.connect("pressed", self, "_on_Button_pressed")
-    $ArrowLeft.play()
-    $ArrowRight.play()
-    $Sailors.play()
-    $Keys_left.play()
-    $Keys_right.play()
+    $Next.connect("pressed", self, "_on_Button_pressed")
     
-    $Left_Q.play()
-    $Left_A.play()
-    $Right_D.play()
+    $PlayerMenu/Left_Q.play()
+    $PlayerMenu/Left_A.play()
+    $PlayerMenu/Right_D.play()
     
     $AnimationPlayer.play("Player")
     
     
 func _on_Button_pressed():
-    get_tree().change_scene("res://Main.tscn")
-
-
-
+    get_tree().change_scene("res://Start_screen2.tscn")

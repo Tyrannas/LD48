@@ -1,26 +1,18 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/font/Writing.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/Start.png" type="Texture" id=2]
-[ext_resource path="res://assets/background.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/Next.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/background.png" type="Texture" id=3]
 [ext_resource path="res://Start_screen.gd" type="Script" id=4]
 [ext_resource path="res://assets/prefabs/player/PlayerAnimated.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/arrow_menu.png" type="Texture" id=6]
-[ext_resource path="res://assets/icon.png" type="Texture" id=7]
-[ext_resource path="res://assets/arrow.png" type="Texture" id=9]
-[ext_resource path="res://assets/touch_clavier.png" type="Texture" id=10]
-[ext_resource path="res://assets/arrow_white_light.png" type="Texture" id=11]
-[ext_resource path="res://assets/arrow_empty_light.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/arrow_menu.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/touche_a_sans_fond.png" type="Texture" id=7]
 [ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://assets/marins_small.png" type="Texture" id=14]
-[ext_resource path="res://assets/marins_small2.png" type="Texture" id=15]
-[ext_resource path="res://assets/touch_clavier_white.png" type="Texture" id=16]
-[ext_resource path="res://assets/touche_q_sans_fond.png" type="Texture" id=17]
-[ext_resource path="res://assets/touche_q.png" type="Texture" id=18]
-[ext_resource path="res://assets/touche_d.png" type="Texture" id=19]
-[ext_resource path="res://assets/touche_d_sans_fond.png" type="Texture" id=20]
-[ext_resource path="res://assets/touche_a_sans_fond.png" type="Texture" id=21]
-[ext_resource path="res://assets/touche_a.png" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/touche_q_sans_fond.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/touche_q.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprites/touche_d.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/touche_d_sans_fond.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/touche_a.png" type="Texture" id=22]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://assets/font/Abuget.ttf"
@@ -29,80 +21,7 @@ font_path = "res://assets/font/Abuget.ttf"
 size = 90
 font_data = SubResource( 1 )
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "Left",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "Right",
-"speed": 2.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "Sailors",
-"speed": 2.0
-} ]
-
-[sub_resource type="DynamicFont" id=5]
-size = 40
-font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 50
-font_data = SubResource( 1 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 40
-font_data = ExtResource( 13 )
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "left",
-"speed": 2.0
-} ]
-
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "right",
-"speed": 2.0
-} ]
-
-[sub_resource type="SpriteFrames" id=10]
-animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "default",
-"speed": 1.0
-} ]
-
-[sub_resource type="SpriteFrames" id=11]
-animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "default",
-"speed": 1.0
-} ]
-
-[sub_resource type="SpriteFrames" id=12]
-animations = [ {
-"frames": [ ExtResource( 19 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "default",
-"speed": 1.0
-} ]
-
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 resource_name = "Player"
 length = 4.0
 loop = true
@@ -116,8 +35,40 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2, 4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 323.748, 389.007 ), Vector2( 352.37, 389.007 ), Vector2( 323.748, 389.007 ) ]
+"values": [ Vector2( 323.748, 449 ), Vector2( 352.37, 449 ), Vector2( 323.748, 449 ) ]
 }
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 13 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 7 ), ExtResource( 22 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
 
 [node name="Start_screen" type="CanvasLayer"]
 script = ExtResource( 4 )
@@ -134,9 +85,9 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -293.5
-margin_top = -19.938
+margin_top = 71.062
 margin_right = 317.5
-margin_bottom = 259.061
+margin_bottom = 350.061
 size_flags_horizontal = 0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
@@ -156,56 +107,50 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Dive Dive Revolution"
 align = 1
 
-[node name="Start" type="TextureButton" parent="."]
+[node name="Next" type="TextureButton" parent="."]
 anchor_left = 0.505
 anchor_top = 0.336
 anchor_right = 0.505
 anchor_bottom = 0.336
 margin_left = -97.8308
-margin_top = -95.1553
+margin_top = 375.845
 margin_right = 292.169
-margin_bottom = 120.846
+margin_bottom = 591.846
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="arrow_menu" type="Sprite" parent="."]
-position = Vector2( 455.983, 366.273 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../PlayerMenu/Player")
+anims/Player = SubResource( 3 )
+
+[node name="PlayerMenu" type="Control" parent="."]
+margin_left = 9.51367
+margin_top = -29.7301
+margin_right = 49.5137
+margin_bottom = 10.2699
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow_menu" type="Sprite" parent="PlayerMenu"]
+position = Vector2( 467.983, 455.273 )
 rotation = 0.150098
 scale = Vector2( 0.413094, 0.399152 )
 texture = ExtResource( 6 )
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 323.748, 389.007 )
+[node name="Player" parent="PlayerMenu" instance=ExtResource( 5 )]
+position = Vector2( 323.748, 449 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="ArrowLeft" type="AnimatedSprite" parent="."]
-position = Vector2( 484.37, 668.633 )
-rotation = -1.5708
-frames = SubResource( 3 )
-animation = "Left"
-frame = 1
-
-[node name="ArrowRight" type="AnimatedSprite" parent="."]
-position = Vector2( 574.555, 667.966 )
-rotation = 1.5708
-frames = SubResource( 3 )
-animation = "Right"
-
-[node name="Sailors" type="AnimatedSprite" parent="."]
-position = Vector2( 137.502, 703.903 )
-scale = Vector2( 0.685472, 0.685472 )
-frames = SubResource( 4 )
-animation = "Sailors"
-
-[node name="ItsYou" type="Label" parent="."]
-margin_left = 420.131
-margin_top = 303.722
-margin_right = 564.131
-margin_bottom = 392.722
-custom_fonts/font = SubResource( 5 )
+[node name="ItsYou" type="Label" parent="PlayerMenu"]
+margin_left = 432.131
+margin_top = 392.722
+margin_right = 576.131
+margin_bottom = 481.722
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "It 's you !"
 align = 1
@@ -213,42 +158,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StayAlive" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -277.0
-margin_top = 473.046
-margin_right = 277.0
-margin_bottom = 654.046
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Make sure you always have oxygen"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="KeepTheBeat" type="Label" parent="."]
-margin_left = 359.462
-margin_top = 564.181
-margin_right = 700.462
-margin_bottom = 659.181
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "So keep the beat ! "
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TouchesA_D" type="Label" parent="."]
-margin_left = 98.9236
-margin_top = 350.234
-margin_right = 304.924
-margin_bottom = 457.234
-custom_fonts/font = SubResource( 7 )
+[node name="TouchesA_D" type="Label" parent="PlayerMenu"]
+margin_left = 110.924
+margin_top = 439.234
+margin_right = 316.924
+margin_bottom = 546.234
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Move to collect coins"
 align = 1
@@ -258,80 +173,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="arrow_menu_move2" type="Sprite" parent="."]
-position = Vector2( 429.671, 735.714 )
-rotation = 4.11374
-scale = Vector2( 0.288, 0.278 )
-texture = ExtResource( 6 )
+[node name="Left_Q" type="AnimatedSprite" parent="PlayerMenu"]
+position = Vector2( 293.242, 546.234 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 6 )
 
-[node name="TouchesL_R" type="Label" parent="."]
-margin_left = 252.449
-margin_top = 670.736
-margin_right = 455.449
-margin_bottom = 763.736
-custom_fonts/font = SubResource( 7 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Use your arrows to hit the beat"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Left_A" type="AnimatedSprite" parent="PlayerMenu"]
+position = Vector2( 237.242, 546.234 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 7 )
 
-[node name="Keys_left" type="AnimatedSprite" parent="."]
-position = Vector2( 498.252, 748.891 )
-rotation = 1.5708
-scale = Vector2( 0.5, -0.5 )
+[node name="Right_D" type="AnimatedSprite" parent="PlayerMenu"]
+position = Vector2( 432.131, 546.234 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 8 )
-animation = "left"
 
-[node name="Keys_right" type="AnimatedSprite" parent="."]
-position = Vector2( 561.647, 748.556 )
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 9 )
-animation = "right"
-
-[node name="Key_up" type="Sprite" parent="."]
-position = Vector2( 529.64, 716.522 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 10 )
-
-[node name="Key_down" type="Sprite" parent="."]
-position = Vector2( 530.307, 748.891 )
-scale = Vector2( 0.5, -0.5 )
-texture = ExtResource( 10 )
-
-[node name="Left_Q" type="AnimatedSprite" parent="."]
-position = Vector2( 281.242, 457.234 )
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 10 )
-
-[node name="Left_A" type="AnimatedSprite" parent="."]
-position = Vector2( 225.242, 457.234 )
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 11 )
-
-[node name="Right_D" type="AnimatedSprite" parent="."]
-position = Vector2( 420.131, 457.234 )
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 12 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Player")
-anims/Player = SubResource( 13 )
-
-[node name="Oxygen" type="Sprite" parent="."]
-position = Vector2( 552.528, 565.453 )
-scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 7 )
-
-[node name="Slash" type="Label" parent="."]
-margin_left = 247.355
-margin_top = 432.277
-margin_right = 287.355
-margin_bottom = 495.277
+[node name="Slash" type="Label" parent="PlayerMenu"]
+margin_left = 259.355
+margin_top = 521.277
+margin_right = 299.355
+margin_bottom = 584.277
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "/"
