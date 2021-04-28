@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/background.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/background.png" type="Texture" id=1]
 [ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://GameOver.gd" type="Script" id=3]
-[ext_resource path="res://assets/restart.png" type="Texture" id=4]
-[ext_resource path="res://assets/player_fish.png" type="Texture" id=5]
-[ext_resource path="res://assets/head.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/restart.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/player_fish.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/head.png" type="Texture" id=6]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Remove_the_head"
 length = 2.0
 tracks/0/type = "value"
@@ -23,18 +23,18 @@ tracks/0/keys = {
 "values": [ Vector2( 530.419, 607.634 ), Vector2( 530.419, 586.134 ), Vector2( 496.419, 572.134 ), Vector2( 450.919, 598.134 ), Vector2( 413.419, 628.134 ), Vector2( 413.919, 669.134 ) ]
 }
 
-[sub_resource type="DynamicFontData" id=9]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/font/Abuget.ttf"
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=3]
 size = 50
-font_data = SubResource( 9 )
+font_data = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=4]
 size = 100
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=5]
 size = 50
 font_data = ExtResource( 2 )
 
@@ -68,7 +68,7 @@ texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameEnd"]
 root_node = NodePath("../head")
-anims/Remove_the_head = SubResource( 3 )
+anims/Remove_the_head = SubResource( 1 )
 
 [node name="EasterEgg" type="Label" parent="GameEnd"]
 visible = false
@@ -76,7 +76,7 @@ margin_left = 124.768
 margin_top = 661.122
 margin_right = 551.768
 margin_bottom = 790.122
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Why the oxygen though ?"
 align = 1
@@ -92,9 +92,10 @@ margin_left = -120.5
 margin_top = 181.224
 margin_right = 140.5
 margin_bottom = 307.224
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Game Over"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -106,7 +107,7 @@ margin_left = -88.8173
 margin_top = 287.879
 margin_right = 91.1827
 margin_bottom = 350.879
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Score"
 align = 1
@@ -121,7 +122,7 @@ margin_left = -88.8173
 margin_top = 374.691
 margin_right = 91.1827
 margin_bottom = 437.691
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Depth"
 align = 1

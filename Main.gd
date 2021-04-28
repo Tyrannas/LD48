@@ -9,7 +9,7 @@ var BACKGROUND_WIDTH = 680
 
 var background_size
 var biome_index = 0
-
+var biome_infos = []
 var fade_out_duration = 3.0
 var fade_in_duration = 1.5
 var fade_type = 1 # TRANS_SINE
@@ -23,32 +23,60 @@ var Kraken = preload('res://assets/prefabs/kraken/kraken.tscn')
 
 var rng = RandomNumberGenerator.new()
     
-onready var biome_infos = [
-    {
-        'depth': 0,
-        'inputs': ['ui_left', 'ui_right'],
-        'music': $Player/Music,
-        'bpm': 60.0,
-        'sprites': {"object": Algue, "number": 2},
-        'coin_value': 10,
-    },
-    {
-        'depth': 100,
-        'inputs': ['ui_up', 'ui_up', 'ui_right', 'ui_left'],
-        'music': $Player/Music2,
-        'bpm': 120.0,
-        'sprites': {"object": Caillou, "number": 1},
-        'coin_value': 20,
-    },
-    {
-        'depth': 250,
-        'inputs': ['ui_left', 'ui_right', 'ui_up', 'ui_down', 'ui_left', 'ui_right'],
-        'music': $Player/Music3,
-        'bpm': 200.0,
-        'sprites': {"object": Kraken, "number": 2},
-        'coin_value': 30,
-    },
-]
+onready var biome_infos_all = {
+    "normal": [
+        {
+            'depth': 0,
+            'inputs': ['ui_left', 'ui_right'],
+            'music': $Player/Music,
+            'bpm': 60.0,
+            'sprites': {"object": Algue, "number": 2},
+            'coin_value': 10,
+        },
+        {
+            'depth': 100,
+            'inputs': ['ui_right', 'ui_left', 'ui_left'],
+            'music': $Player/Music2,
+            'bpm': 120.0,
+            'sprites': {"object": Caillou, "number": 1},
+            'coin_value': 20,
+        },
+        {
+            'depth': 300,
+            'inputs': ['ui_right', 'ui_left', 'ui_left', 'ui_right'],
+            'music': $Player/Music3,
+            'bpm': 200.0,
+            'sprites': {"object": Kraken, "number": 2},
+            'coin_value': 30,
+        }
+    ],
+    "hard": [
+        {
+            'depth': 0,
+            'inputs': ['ui_left', 'ui_right'],
+            'music': $Player/Music,
+            'bpm': 60.0,
+            'sprites': {"object": Algue, "number": 2},
+            'coin_value': 10,
+        },
+        {
+            'depth': 100,
+            'inputs': ['ui_up', 'ui_up', 'ui_right', 'ui_left'],
+            'music': $Player/Music2,
+            'bpm': 120.0,
+            'sprites': {"object": Caillou, "number": 1},
+            'coin_value': 30,
+        },
+        {
+            'depth': 300,
+            'inputs': ['ui_left', 'ui_right', 'ui_up', 'ui_down', 'ui_left', 'ui_right'],
+            'music': $Player/Music3,
+            'bpm': 200.0,
+            'sprites': {"object": Kraken, "number": 2},
+            'coin_value': 45,
+        }
+    ]
+}
 
 func get_biome_inputs(index):
     return biome_infos[index]['inputs']
@@ -121,6 +149,7 @@ func spaw_coins():
         coin.position = Vector2(rng.randf_range(30, BACKGROUND_WIDTH - 30), i)
     
 func _ready():
+    biome_infos = biome_infos_all[Global.MODE]
     var GUI = $Player/Camera2D/CanvasLayer/GUI/
     var Oxygen = $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen
     $Rythm.connect("keys_pressed_signal", 

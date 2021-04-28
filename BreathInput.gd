@@ -12,12 +12,12 @@ var input_rotation = {
 }
 
 var arrows_pictures = {
-    -1: load("res://assets/arrow_red.png"),
-    0: load("res://assets/arrow.png"),
-    1: load("res://assets/arrow_white.png")
+    -1: load("res://assets/sprites/arrow_red.png"),
+    0: load("res://assets/sprites/arrow.png"),
+    1: load("res://assets/sprites/arrow_white.png")
 }
 
-var current_arrow_picture = load("res://assets/light_white.png")
+var current_arrow_picture = load("res://assets/sprites/light_white.png")
 
 var center = 0
 

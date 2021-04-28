@@ -1,0 +1,185 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://assets/font/Writing.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/sprites/normal.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/background.png" type="Texture" id=3]
+[ext_resource path="res://Start_screen2.gd" type="Script" id=4]
+[ext_resource path="res://assets/sprites/hard.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/arrow_menu.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/icon.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/arrow.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/touch_clavier.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/arrow_white_light.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/arrow_empty_light.png" type="Texture" id=12]
+[ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/sprites/marins_small.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/marins_small2.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/touch_clavier_white.png" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Left",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Right",
+"speed": 2.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "Sailors",
+"speed": 2.0
+} ]
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "left",
+"speed": 2.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "right",
+"speed": 2.0
+} ]
+
+[node name="Start_screen2" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Normal" type="TextureButton" parent="."]
+anchor_left = 0.505
+anchor_top = 0.336
+anchor_right = 0.505
+anchor_bottom = 0.336
+margin_left = -245.441
+margin_top = 379.504
+margin_right = 144.559
+margin_bottom = 595.506
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hard" type="TextureButton" parent="."]
+anchor_left = 0.505
+anchor_top = 0.336
+anchor_right = 0.505
+anchor_bottom = 0.336
+margin_left = 50.8894
+margin_top = 378.382
+margin_right = 440.889
+margin_bottom = 594.383
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowLeft" type="AnimatedSprite" parent="."]
+position = Vector2( 311.234, 370.433 )
+rotation = -1.5708
+frames = SubResource( 1 )
+animation = "Left"
+frame = 1
+
+[node name="ArrowRight" type="AnimatedSprite" parent="."]
+position = Vector2( 401.42, 369.766 )
+rotation = 1.5708
+frames = SubResource( 1 )
+animation = "Right"
+
+[node name="Sailors" type="AnimatedSprite" parent="."]
+position = Vector2( 354.56, 217.38 )
+scale = Vector2( 0.9, 0.9 )
+frames = SubResource( 2 )
+animation = "Sailors"
+
+[node name="StayAlive" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -278.059
+margin_top = 469.868
+margin_right = 275.941
+margin_bottom = 650.868
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Keep the rhythm to produce oxygen !"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow_menu_move2" type="Sprite" parent="."]
+position = Vector2( 256.535, 437.514 )
+rotation = 4.11374
+scale = Vector2( 0.288, 0.278 )
+texture = ExtResource( 6 )
+
+[node name="TouchesL_R" type="Label" parent="."]
+margin_left = 22.9313
+margin_top = 307.543
+margin_right = 225.931
+margin_bottom = 523.543
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Use Arrow Keys when the arrow flashes"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Keys_left" type="AnimatedSprite" parent="."]
+position = Vector2( 325.116, 450.691 )
+rotation = 1.5708
+scale = Vector2( 0.5, -0.5 )
+frames = SubResource( 4 )
+animation = "left"
+
+[node name="Keys_right" type="AnimatedSprite" parent="."]
+position = Vector2( 388.511, 450.356 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 5 )
+animation = "right"
+
+[node name="Key_up" type="Sprite" parent="."]
+position = Vector2( 356.504, 418.322 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+
+[node name="Key_down" type="Sprite" parent="."]
+position = Vector2( 357.171, 450.691 )
+scale = Vector2( 0.5, -0.5 )
+texture = ExtResource( 10 )
+
+[node name="Oxygen" type="Sprite" parent="."]
+position = Vector2( 551.469, 562.275 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 7 )

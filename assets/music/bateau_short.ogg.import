@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bateau_short.ogg-3ff0a7876993e9995f0dabde8ef73726.oggstr"
+
+[deps]
+
+source_file="res://assets/music/bateau_short.ogg"
+dest_files=[ "res://.import/bateau_short.ogg-3ff0a7876993e9995f0dabde8ef73726.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
