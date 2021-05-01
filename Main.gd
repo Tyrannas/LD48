@@ -162,6 +162,8 @@ func _ready():
     Oxygen.connect("combo", GUI, "_update_combo_multiplier")
     $Rythm.connect("combo", GUI, "_update_combo_multiplier")
     
+    $StartTimer.connect("timeout", self, "_on_StartTimer_timeout")
+    
         
     # Gestion de la fin de partie
     Oxygen.connect("game_over", self, "_game_over")

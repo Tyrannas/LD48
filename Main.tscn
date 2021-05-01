@@ -77,5 +77,3 @@ autostart = true
 
 [node name="Plouf" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-
-[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
