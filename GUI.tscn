@@ -7,7 +7,6 @@
 [ext_resource path="res://BreathInput.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/font/Abuget.ttf" type="DynamicFontData" id=7]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 45
 font_data = ExtResource( 7 )

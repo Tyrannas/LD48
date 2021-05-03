@@ -60,7 +60,6 @@ margin_right = 4.23785
 
 [node name="Music" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 4 )
-autoplay = true
 
 [node name="Music2" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 7 )
@@ -71,7 +70,7 @@ stream = ExtResource( 10 )
 [node name="Rythm" parent="." instance=ExtResource( 3 )]
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 3.5
+wait_time = 3.25
 one_shot = true
 autostart = true
 

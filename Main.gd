@@ -53,7 +53,7 @@ onready var biome_infos_all = {
     "hard": [
         {
             'depth': 0,
-            'inputs': ['ui_left', 'ui_right'],
+            'inputs': ['ui_up', 'ui_up'],
             'music': $Player/Music,
             'bpm': 60.0,
             'sprites': {"object": Algue, "number": 2},
@@ -149,12 +149,16 @@ func spaw_coins():
         coin.position = Vector2(rng.randf_range(30, BACKGROUND_WIDTH - 30), i)
     
 func _ready():
+    
     biome_infos = biome_infos_all[Global.MODE]
     var GUI = $Player/Camera2D/CanvasLayer/GUI/
     var Oxygen = $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/HBoxContainer/ItemsOxygen/Oxygen/Oxygen
     $Rythm.connect("keys_pressed_signal", 
                    $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput,
                    "_display_keys_to_press")
+    $Rythm.connect("start_new_biome", 
+                   $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput,
+                   "_handle_new_biome")
     $Rythm.connect("oxygen_signal", Oxygen, "_update_oxygen")
     self.connect("biome_signal", $Rythm, "_update_biome_inputs")
     $Player/FadeOut.connect('tween_completed', self, '_stop_music')  
@@ -174,6 +178,8 @@ func _ready():
     self.instantiate_biome_delimiters()
     self.populate_biomes()
     self.spaw_coins()
+    yield(get_tree().create_timer(0.5), "timeout")
+    $Player/Music.play()
 
 func fade_out(stream_player):
     var tween_out = $Player/FadeOut

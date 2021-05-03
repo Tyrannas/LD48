@@ -17,3 +17,6 @@ __meta__ = {
 }
 
 [node name="KeyTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.5

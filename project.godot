@@ -9,31 +9,13 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "AudioManage",
-"language": "GDScript",
-"path": "res://addons/WebAudioExternal/AudioManager.gd"
-}, {
-"base": "Node2D",
-"class": "AudioSpacial2D",
-"language": "GDScript",
-"path": "res://addons/WebAudioExternal/AudioSpacial2D.gd"
-}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
-}, {
-"base": "Node",
-"class": "JavascriptManage",
-"language": "GDScript",
-"path": "res://addons/WebAudioExternal/JavascriptManager.gd"
 } ]
 _global_script_class_icons={
-"AudioManage": "",
-"AudioSpacial2D": "",
-"GitAPI": "",
-"JavascriptManage": ""
+"GitAPI": ""
 }
 
 [application]

@@ -1,6 +1,6 @@
 extends Node
 
-var MODE
+var MODE = "normal"
 var score = 0
 var is_dead = false
 var is_retry = false

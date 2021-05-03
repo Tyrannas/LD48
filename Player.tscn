@@ -27,6 +27,7 @@ tracks/0/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 371.535, 171.737 )
+z_index = 3000
 script = ExtResource( 2 )
 
 [node name="Pipe" type="Sprite" parent="."]
