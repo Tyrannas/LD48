@@ -60,7 +60,7 @@ onready var biome_infos_all = {
             'coin_value': 10,
         },
         {
-            'depth': 150,
+            'depth': 100,
             'inputs': ['ui_up', 'ui_up', 'ui_right', 'ui_left'],
             'music': $Player/Music2,
             'bpm': 120.0,
@@ -179,6 +179,10 @@ func _ready():
     self.populate_biomes()
     self.spaw_coins()
 #    yield(get_tree().create_timer(0.5), "timeout")
+    # compute time_delay due to latency to know when the music is going to be played
+    var time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+    $StartTimer.wait_time += time_delay
+    $StartTimer.start()
     $Player/Music.play()
 
 func fade_out(stream_player):
