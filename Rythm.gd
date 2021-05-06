@@ -16,6 +16,7 @@ var input_was_pressed = false
 var rythm_fucked = false
 var new_biome_infos = {}
 var preserve_first = false
+var test_first_time = true
 
 func _ready():
     $KeyTimer.connect("timeout", self, "_on_key_timer_timeout")
@@ -27,9 +28,6 @@ func get_current_input():
 
 func _get_next_index():
     return input_index + 1 if input_index < len(biome_inputs) - 1 else 0
-    
-func _get_previous_index():
-    return input_index - 1 if input_index > 0 else len(biome_inputs) - 1
     
 func _reset_keys_pressed():
     keys_pressed = []
@@ -67,8 +65,13 @@ func _update_biome_infos():
     biome_inputs = new_biome_infos['inputs']
     $KeyTimer.wait_time = 60.0 / bpm
     # avoir un start timer à qui on met une timeout de wait_time / 2 et on lance le keytimer au bout
-    $StartTimer.wait_time = $KeyTimer.wait_time / 2
-    $StartTimer.start()
+    _on_start_timer_timeout()
+#    if test_first_time:
+#        $StartTimer.wait_time = $KeyTimer.wait_time / 2
+#        $StartTimer.start()
+#        test_first_time = false
+#    else:
+#        _on_start_timer_timeout()
 
 func _update_biome_inputs(new_inputs, _bpm):
     """The UI will be changed at the end of the rythm (in _on_key_timer_timeout)"""
@@ -83,7 +86,7 @@ func is_last_note_of_rythm():
     return input_index == biome_inputs.size() - 1
 
 func _on_key_timer_timeout():
-    update_keys_pressed_current(input_index+1)
+#    update_keys_pressed_current(input_index+1)
     if not input_was_pressed:
         update_keys_pressed_result(-1)
     # Si toutes les notes du rythme ont été jouées
@@ -104,22 +107,25 @@ func __get_time():
     return String(time.hour) +":"+String(time.minute)+":"+String(time.second)+" - "
 
 func _is_in_window_before_next():
-    return $KeyTimer.time_left < (bpm / BPM_DIVIDER) * $KeyTimer.wait_time
+    var ratio = min(bpm / BPM_DIVIDER, 0.5)
+    return $KeyTimer.time_left < ratio * $KeyTimer.wait_time
 
 func _is_in_window_after_current():
-    return $KeyTimer.time_left > (1 - (bpm / BPM_DIVIDER)) * $KeyTimer.wait_time
+    var ratio = min(bpm / BPM_DIVIDER, 0.5)
+    return $KeyTimer.time_left > (1 - ratio) * $KeyTimer.wait_time
     
 func _process(_delta):
-    if not _is_in_window_after_current():
-        # remove current status of a key once 1/3 of the timer is elapsed
-        # -1 is used to set no arrow as current
-        update_keys_pressed_current(-1)
-        emit_signal("keys_pressed_signal", keys_pressed)
-    if _is_in_window_before_next():
-        # if in next window then, light next arrow
-        update_keys_pressed_current(_get_next_index())
-        emit_signal("keys_pressed_signal", keys_pressed)
-    # prevents crashes if breathing before the game starts for real
+    if not $KeyTimer.is_stopped():
+        if not _is_in_window_after_current():
+            # remove current status of a key is out of the window of acceptance
+            # -1 is used to set no arrow as current
+            update_keys_pressed_current(-1)
+            emit_signal("keys_pressed_signal", keys_pressed)
+        if _is_in_window_before_next():
+            # if in next window then, light next arrow
+            update_keys_pressed_current(_get_next_index())
+            emit_signal("keys_pressed_signal", keys_pressed)
+        # prevents crashes if breathing before the game starts for real
     if keys_pressed:
         for input in ["ui_left", "ui_right", "ui_up", "ui_down"]:
             if Input.is_action_just_pressed(input):

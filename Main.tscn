@@ -70,7 +70,7 @@ stream = ExtResource( 10 )
 [node name="Rythm" parent="." instance=ExtResource( 3 )]
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 3.25
+wait_time = 3.0
 one_shot = true
 autostart = true
 

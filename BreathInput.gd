@@ -50,14 +50,12 @@ func _handle_new_biome(speed, nb_arrows):
     update()
 
 func _process(delta):
-    var arrows = get_tree().get_nodes_in_group(INPUTS_GROUP)
     cursor.position.x += cursor_speed * delta 
-    if arrows and cursor.position.x > arrows[len(arrows) - 1 ].position.x + total_margin / 2:
+    if cursor.position.x > cursor_end:
         cursor.position.x = cursor_start
     
 func _draw():
-    pass
-#    draw_line(Vector2(cursor_start, OFFSET_INPUTS_Y + CURSOR_OFFSET), Vector2(cursor_end, OFFSET_INPUTS_Y + CURSOR_OFFSET), Color.white, 1)
+    draw_line(Vector2(cursor_start, OFFSET_INPUTS_Y + CURSOR_OFFSET), Vector2(cursor_end, OFFSET_INPUTS_Y + CURSOR_OFFSET), Color.white, 1)
     
 func get_key_sprites(input, result, keys_length, index):
     var sprite = Sprite.new()

@@ -43,7 +43,7 @@ onready var biome_infos_all = {
         },
         {
             'depth': 300,
-            'inputs': ['ui_right', 'ui_left', 'ui_left', 'ui_right'],
+            'inputs': ['ui_right', 'ui_left', 'ui_right', 'ui_left'],
             'music': $Player/Music3,
             'bpm': 200.0,
             'sprites': {"object": Kraken, "number": 2},
@@ -60,7 +60,7 @@ onready var biome_infos_all = {
             'coin_value': 10,
         },
         {
-            'depth': 100,
+            'depth': 150,
             'inputs': ['ui_up', 'ui_up', 'ui_right', 'ui_left'],
             'music': $Player/Music2,
             'bpm': 120.0,
@@ -178,7 +178,7 @@ func _ready():
     self.instantiate_biome_delimiters()
     self.populate_biomes()
     self.spaw_coins()
-    yield(get_tree().create_timer(0.5), "timeout")
+#    yield(get_tree().create_timer(0.5), "timeout")
     $Player/Music.play()
 
 func fade_out(stream_player):
