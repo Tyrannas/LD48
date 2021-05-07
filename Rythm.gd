@@ -2,6 +2,7 @@ extends Node2D
 
 signal keys_pressed_signal
 signal start_new_biome
+signal sequence_finished
 signal oxygen_signal
 signal combo
 
@@ -88,6 +89,8 @@ func _on_key_timer_timeout():
         # et si il faut changer de biome, on update les infos et on reset le tiemr
         if new_biome_infos:
             $KeyTimer.stop()
+            # tell Main to start the new music
+            emit_signal("sequence_finished")
             _update_biome_infos()
         _reset_keys_pressed()
     else:

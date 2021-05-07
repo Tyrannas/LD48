@@ -170,6 +170,7 @@ func _ready():
                    $Player/Camera2D/CanvasLayer/GUI/VBoxContainer/ArrowsContainer/MarginContainer/BreathInput,
                    "_handle_new_biome")
     $Rythm.connect("oxygen_signal", Oxygen, "_update_oxygen")
+    $Rythm.connect("sequence_finished", self, "_on_sequence_finished")
     self.connect("biome_signal", $Rythm, "_update_biome_inputs")
     $Player/FadeOut.connect('tween_completed', self, '_stop_music')  
     
@@ -206,7 +207,7 @@ func fade_in():
     new_music_player.play()
     var tween_in = $Player/FadeIn
     # tween music volume back to 0
-    tween_in.interpolate_property(new_music_player, "volume_db", -80, 0, fade_in_duration, fade_type, Tween.EASE_OUT, 0)
+    tween_in.interpolate_property(new_music_player, "volume_db", -20, 0, fade_in_duration, fade_type, Tween.EASE_OUT, 0)
     tween_in.start()
     current_music_player = new_music_player
        
@@ -216,11 +217,17 @@ func _stop_music(object, _key):
 
 func _update_biome(_body):
     biome_index += 1
-    self.fade_out(current_music_player)
-    self.fade_in()
     Global.coin_value = self.get_biome_coin_value(biome_index)
     emit_signal("biome_signal", self.get_biome_inputs(biome_index), self.get_biome_bpm(biome_index))
 
+func _on_sequence_finished():
+    """
+    when there is a new biome and the rhythm manager has finished processing the current sequence
+    start the new music
+    """
+    self.fade_out(current_music_player)
+    self.fade_in()
+    
 func _process(_delta):    
     if $ReadyText.visible:
         # Affichage du temps restant avant de démarrer le jeu
