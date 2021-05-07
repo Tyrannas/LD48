@@ -34,7 +34,7 @@ onready var biome_infos_all = {
             'coin_value': 10,
         },
         {
-            'depth': 100,
+            'depth': 105,
             'inputs': ['ui_right', 'ui_left', 'ui_left'],
             'music': $Player/Music2,
             'bpm': 120.0,
@@ -53,14 +53,14 @@ onready var biome_infos_all = {
     "hard": [
         {
             'depth': 0,
-            'inputs': ['ui_up', 'ui_up'],
+            'inputs': ['ui_up', 'ui_down'],
             'music': $Player/Music,
             'bpm': 60.0,
             'sprites': {"object": Algue, "number": 2},
             'coin_value': 10,
         },
         {
-            'depth': 100,
+            'depth': 101.5,
             'inputs': ['ui_up', 'ui_up', 'ui_right', 'ui_left'],
             'music': $Player/Music2,
             'bpm': 120.0,
@@ -78,6 +78,10 @@ onready var biome_infos_all = {
     ]
 }
 
+"""
+getters 
+"""
+
 func get_biome_inputs(index):
     return biome_infos[index]['inputs']
 
@@ -94,6 +98,9 @@ func get_biome_coin_value(index):
     return biome_infos[index]['coin_value']
 
 func instantiate_biome_delimiters():
+    """
+    permet de créer les zone de transitions entre les biomes et de connecter le signal pour déclencher la transition
+    """
     # we skip the first biome
     for biome_i in len(biome_infos):
         if biome_i == 0:
@@ -117,6 +124,9 @@ func instantiate_biome_delimiters():
             add_child(key_sprite)
 
 func populate_biomes():
+    """
+    dessine les décors des différents biomes    
+    """
     rng.randomize()
     # start spawning zone
     var start = 10
@@ -178,10 +188,10 @@ func _ready():
     self.instantiate_biome_delimiters()
     self.populate_biomes()
     self.spaw_coins()
-#    yield(get_tree().create_timer(0.5), "timeout")
     # compute time_delay due to latency to know when the music is going to be played
     var time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
     $StartTimer.wait_time += time_delay
+    # wait for the start_timer before starting the game
     $StartTimer.start()
     $Player/Music.play()
 

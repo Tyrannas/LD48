@@ -38,9 +38,13 @@ func _ready():
     cursor.hide()
 
 func _handle_new_biome(speed, nb_arrows):
+    """
+    au changement de biome on recalcule la position et la vitesse du curseur
+    """
     # on veut bouger de total_margin par (60 / bpm)s 
     cursor_speed = total_margin / speed
-    # ugly hack to get a sprite on position 0
+    # ugly hack: create sprites that won't be used of the first and last arrows
+    # in order to compute cursor position
     var first_sprite = get_key_sprites("ui_up", 1, nb_arrows, 0)
     var last_sprite = get_key_sprites("ui_up", 1, nb_arrows, nb_arrows - 1 )
     cursor_start = first_sprite.position.x - total_margin / 2
@@ -50,6 +54,7 @@ func _handle_new_biome(speed, nb_arrows):
     update()
 
 func _process(delta):
+    # on multiplie par delta pour normalizer la vitesse à la seconde
     cursor.position.x += cursor_speed * delta 
     if cursor.position.x > cursor_end:
         cursor.position.x = cursor_start
@@ -58,6 +63,10 @@ func _draw():
     draw_line(Vector2(cursor_start, OFFSET_INPUTS_Y + CURSOR_OFFSET), Vector2(cursor_end, OFFSET_INPUTS_Y + CURSOR_OFFSET), Color.white, 1)
     
 func get_key_sprites(input, result, keys_length, index):
+    """
+    permet de créer le sprite de la fleche en fonction des inputs
+    permet de calculer sa position aussi 
+    """
     var sprite = Sprite.new()
     sprite.set_texture(arrows_pictures[result])
     sprite.rotation_degrees = input_rotation[input]

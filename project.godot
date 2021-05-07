@@ -37,6 +37,7 @@ gdscript/warnings/return_value_discarded=false
 window/size/width=680
 window/size/height=800
 window/handheld/orientation="portrait"
+window/stretch/aspect="keep_width"
 
 [gdnative]
 
